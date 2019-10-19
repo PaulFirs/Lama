@@ -18,7 +18,30 @@
 #define BUF_SIZE 		9//Размер пакета с командами
 
 
+ /*
+  * Comands for I2C
+  */
+#define SWITCH_LIGHT		0x00
+#define GET_TIME 			0x01
+#define SET_TIME 			0x02
+#define GET_SET_ALARM 		0x03
+#define GET_SENSORS			0x04
 
+//-------------------------------------------//
+//		Настройки для управления люстрой	 //
+//-------------------------------------------//
+
+
+#define DELAY_POUSE    242					//Длительность четверти бита, мкс
+#define DELAY_BIT      3*DELAY_POUSE		//Длительность трех четвертей бита, мкс
+
+#define DELAY_MESSAGE  28*DELAY_POUSE		//Задержка между сообщениями, мс
+
+#define MES   0b0000000111110110011100000	//Управляющее слово для люстры
+
+//макроопределения для управления выводом A3 (сигнал на радиомодуль)
+#define A3_ENABLE         GPIOA->BSRR = GPIO_BSRR_BS3;
+#define A3_DISABLE    	  GPIOA->BSRR = GPIO_BSRR_BR3;
 
 
 //
