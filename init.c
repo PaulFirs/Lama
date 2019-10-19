@@ -69,3 +69,53 @@ void SetSysClockTo72(void)
     }
 }
 
+void ports_init(void)
+{
+	GPIO_InitTypeDef port;
+
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_GPIOB | RCC_APB2Periph_GPIOC, ENABLE);
+
+	/* Configure USART1 Tx (PA.09) as alternate function push-pull */
+	port.GPIO_Speed = GPIO_Speed_50MHz;
+	port.GPIO_Mode = GPIO_Mode_AF_PP;
+	port.GPIO_Pin = GPIO_Pin_9;
+	GPIO_Init(GPIOA, &port);
+
+	/* Configure USART1 Rx (PA.10) as input floating */
+	port.GPIO_Speed = GPIO_Speed_50MHz;
+	port.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+	port.GPIO_Pin = GPIO_Pin_10;
+	GPIO_Init(GPIOA, &port);
+}
+
+void usartESP_init(void)
+{
+    /* Enable USART1 and GPIOA clock */
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);
+
+    /* NVIC Configuration */
+    NVIC_InitTypeDef NVIC_InitStructure;
+    /* Enable the USARTx Interrupt */
+    NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn;
+    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+    NVIC_Init(&NVIC_InitStructure);
+
+
+
+    USART_InitTypeDef USART_InitStructure; 					//Структура для конфигурации USART
+
+    //Сбор настроек в структуру
+    USART_InitStructure.USART_BaudRate = 115200; 			// бод/сек
+    USART_InitStructure.USART_WordLength = USART_WordLength_8b; //бит в слове
+    USART_InitStructure.USART_StopBits = USART_StopBits_1; 		// кол-во стоп-Битов
+    USART_InitStructure.USART_Parity = USART_Parity_No; 		// Контрольная сумма
+    USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None; // аппаратное управление передачей данных
+    USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx; 				//вкл/выкл прием/передача
+
+    USART_Init(USART1, &USART_InitStructure); // инициализация собранных настрек
+
+    USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);//Включение прерываний
+    USART_Cmd(USART1, ENABLE);				//Включение USART
+}
