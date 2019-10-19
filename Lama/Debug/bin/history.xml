@@ -1,17 +1,18 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
    <processor signature="arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -g -nostartfiles -Map=Lama.map -O0 --gc-sections -LD:\Program\CooCox\CoIDE\configuration\ProgramData\Lama -TD:\Program\CooCox\CoIDE\configuration\ProgramData\Lama/link.ld -g">
-      <target file="Lama.elf" lastModified="16de35120d9">
-         <source file="..\obj\stm32f10x_tim.o" lastModified="16de3511b7c"/>
-         <source file="..\obj\system_stm32f10x.o" lastModified="16de3511bcf"/>
-         <source file="..\obj\startup_stm32f10x_md.o" lastModified="16de3511c00"/>
-         <source file="..\obj\stm32f10x_gpio.o" lastModified="16de3511c4c"/>
-         <source file="..\obj\main.o" lastModified="16de3511c84"/>
-         <source file="..\obj\init.o" lastModified="16de3511cbf"/>
-         <source file="..\obj\stm32f10x_rcc.o" lastModified="16de3511d0c"/>
-         <source file="..\obj\stm32f10x_usart.o" lastModified="16de3511d60"/>
-         <source file="..\obj\misc.o" lastModified="16de3511d9e"/>
-         <source file="..\obj\stm32f10x_i2c.o" lastModified="16de3511df5"/>
+      <target file="Lama.elf" lastModified="16de3657a19">
+         <source file="..\obj\stm32f10x_tim.o" lastModified="16de3657593"/>
+         <source file="..\obj\system_stm32f10x.o" lastModified="16de36575d1"/>
+         <source file="..\obj\startup_stm32f10x_md.o" lastModified="16de3657602"/>
+         <source file="..\obj\stm32f10x_gpio.o" lastModified="16de3657648"/>
+         <source file="..\obj\main.o" lastModified="16de3657685"/>
+         <source file="..\obj\dwt_delay.o" lastModified="16de36576cb"/>
+         <source file="..\obj\init.o" lastModified="16de3657708"/>
+         <source file="..\obj\stm32f10x_rcc.o" lastModified="16de365774e"/>
+         <source file="..\obj\stm32f10x_usart.o" lastModified="16de36577ae"/>
+         <source file="..\obj\misc.o" lastModified="16de36577ef"/>
+         <source file="..\obj\stm32f10x_i2c.o" lastModified="16de3657846"/>
       </target>
    </processor>
 </history>
