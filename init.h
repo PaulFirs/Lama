@@ -6,6 +6,7 @@
 #include "stm32f10x_rcc.h"
 #include "stm32f10x_gpio.h"
 #include "stm32f10x_usart.h"
+#include "stm32f10x_tim.h"
 #include "misc.h"
 
 #include <string.h>
@@ -42,26 +43,6 @@
 //макроопределения для управления выводом A3 (сигнал на радиомодуль)
 #define A3_ENABLE         GPIOA->BSRR = GPIO_BSRR_BS3;
 #define A3_DISABLE    	  GPIOA->BSRR = GPIO_BSRR_BR3;
-
-
-//
-//
-//const char *AT_OK			= "OK";
-//const char *AT_AT			= "AT\r\n";
-//const char *AT_CWJAP_CUR	= "AT+CWJAP_CUR=\"Internet\",\"23141841\"\r\n";
-//const char *AT_CIPMUX		= "AT+CIPMUX=1\r\n";
-//const char *AT_CIPSERVER	= "AT+CIPSERVER=1,48778\r\n";
-//const char *AT_CONNECT		= "0,CONNECT";
-//const char *AT_CLOSED		= "0,CLOSED";
-//const char *AT_IPD			= "+IPD,";
-
-
-
-
-
-
-
-
 
 
 
@@ -114,5 +95,6 @@ void SetSysClockTo72(void);
 
 void ports_init(void);
 void usartESP_init(void);
+void timer_init(void);
 
 #endif

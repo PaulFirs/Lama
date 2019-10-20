@@ -101,6 +101,13 @@ void ports_init(void)
 	port.GPIO_Mode = GPIO_Mode_IN_FLOATING;
 	port.GPIO_Pin = GPIO_Pin_10;
 	GPIO_Init(GPIOA, &port);
+
+	/* Configure Pin (PB.0) as input(btn) for chan */
+	port.GPIO_Speed = GPIO_Speed_2MHz;
+	port.GPIO_Mode = GPIO_Mode_IPU;
+	port.GPIO_Pin = GPIO_Pin_0;
+	GPIO_Init(GPIOB, &port);
+
 }
 
 void usartESP_init(void)
@@ -133,4 +140,30 @@ void usartESP_init(void)
 
     USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);//¬ключение прерываний
     USART_Cmd(USART1, ENABLE);				//¬ключение USART
+}
+
+
+void timer_init(void)
+{
+
+	TIM_TimeBaseInitTypeDef timer;
+
+    RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);
+
+    TIM_TimeBaseStructInit(&timer);
+    timer.TIM_Prescaler = 7200;//раз в секунду считает таймер 72000000/7200 = 10000 раз в секунду
+    timer.TIM_Period = 1000;//набрав столько сработает прерывание 1000/10000 = 0.1 секунд
+	TIM_TimeBaseInit(TIM3, &timer);
+	TIM_ITConfig(TIM3, TIM_IT_Update, ENABLE);
+	TIM_Cmd(TIM3, ENABLE);		//Enabling in main func
+
+    /* NVIC Configuration */
+    NVIC_InitTypeDef NVIC_InitStructure;
+	    /* Enable the TIM3_IRQn Interrupt */
+	NVIC_InitStructure.NVIC_IRQChannel = TIM3_IRQn;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+	NVIC_Init(&NVIC_InitStructure);
+
 }

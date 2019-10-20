@@ -3,16 +3,6 @@
 #include "usartESP.h"
 
 
-//const char *AT_OK			= "OK";
-//const char *AT_AT			= "AT\r\n";
-//const char *AT_CWJAP_CUR	= "AT+CWJAP_CUR=\"Internet\",\"23141841\"\r\n";
-//const char *AT_CIPMUX		= "AT+CIPMUX=1\r\n";
-//const char *AT_CIPSERVER	= "AT+CIPSERVER=1,48778\r\n";
-//const char *AT_CONNECT		= "0,CONNECT";
-//const char *AT_CLOSED		= "0,CLOSED";
-//const char *AT_IPD			= "+IPD,";
-
-
 void chan(void){
 	for(uint8_t i = 3; i; i--){	//3 раз отправляет 0b0000000111110110011100000 для верности.
 		uint32_t mes = MES;
@@ -35,6 +25,20 @@ void chan(void){
 	}
 }
 
+void TIM3_IRQHandler(void)
+{
+	static uint8_t timer_sensors = 0;
+	if (TIM_GetITStatus(TIM3, ((uint16_t)0x0001)) != RESET)
+	{
+		if (!GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_0)) {//нажата кнопка ручного включения люстры
+			chan();
+			//way_cmd = WAIT;
+		}
+	}
+	TIM_ClearITPendingBit(TIM3, ((uint16_t)0x0001));// Обязательно сбрасываем флаг
+}
+
+
 
 int main(void)
 {
@@ -45,6 +49,7 @@ int main(void)
 	SetSysClockTo72();
 	DWT_Init();
 	ports_init();
+	timer_init();
 	usartESP_init();
 
 	DWT_Delay_sec(5);
