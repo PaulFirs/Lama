@@ -7,10 +7,62 @@
 #include "stm32f10x_gpio.h"
 #include "stm32f10x_usart.h"
 #include "stm32f10x_tim.h"
+#include "stm32f10x_i2c.h"
 #include "misc.h"
 
 #include <string.h>
 #include <stdlib.h>
+
+
+
+
+
+uint8_t error_i2c;
+/*
+ * DS3231
+ */
+
+#define DS_ADDRESS            		0xD0
+#define DS_ADDRESS_WRITE            (DS_ADDRESS|0)
+#define DS_ADDRESS_READ             (DS_ADDRESS|1)
+
+#define DS3231_CONTROL				0x0E	// Адрес регистра управления
+#define DS3231_A1IE					0x00
+#define DS3231_A2IE					0x01
+#define DS3231_INTCN				0x02
+#define DS3231_CONV					0x05
+#define DS3231_BBSQW				0x06
+
+#define DS3231_STATUS				0x0F	// Адрес регистра состояния
+#define DS3231_A1F					0x00
+#define DS3231_A2F					0x01
+#define DS3231_BSY					0x02
+
+
+#define DS3231_DY					0x0A	// Адрес регистра критерия срабатывания
+#define DS3231_DY_PERSEC			0b1111
+#define DS3231_DY_SEC				0b1110
+#define DS3231_DY_MINSEC			0b1100
+#define DS3231_DY_HMINSEC			0b1000
+
+
+#define DS3231_T_MSB				0x11	// Адрес регистра последней измеренной температуры старшиий байт
+#define DS3231_T_LSB				0x12	// Адрес регистра последней измеренной температуры младшиий байт
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -96,5 +148,6 @@ void SetSysClockTo72(void);
 void ports_init(void);
 void usartESP_init(void);
 void timer_init(void);
+void I2C1_init(void);
 
 #endif

@@ -102,12 +102,35 @@ void ports_init(void)
 	port.GPIO_Pin = GPIO_Pin_10;
 	GPIO_Init(GPIOA, &port);
 
+	/* Configure Pin (PB.6,7) as SCK and SDA for I2C */
+	port.GPIO_Speed = GPIO_Speed_2MHz;
+	port.GPIO_Mode = GPIO_Mode_AF_OD;
+	port.GPIO_Pin = GPIO_Pin_6 | GPIO_Pin_7;
+	GPIO_Init(GPIOB, &port);
+
 	/* Configure Pin (PB.0) as input(btn) for chan */
 	port.GPIO_Speed = GPIO_Speed_2MHz;
 	port.GPIO_Mode = GPIO_Mode_IPU;
 	port.GPIO_Pin = GPIO_Pin_0;
 	GPIO_Init(GPIOB, &port);
 
+	//Событие срабатывания будильника на ds3231
+	//прерывание на PORTB_1
+	//RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB , ENABLE);
+	//Прерывания - это альтернативная функция порта
+	//поэтому надо установить бит Alternate function I/O clock enable
+	//в регистре RCC_APB2ENR
+	RCC_APB2PeriphClockCmd(RCC_APB2ENR_AFIOEN , ENABLE);
+	//Наша задача получить в регистре EXTICR[0] такую комбинацию бит
+	// 0000 0000 0001 0000
+	// по умолчанию там ноли, поэтому установим только 1 бит
+	AFIO->EXTICR[0]|=AFIO_EXTICR1_EXTI1_PB;
+	//Прерывания от 1 ноги разрешены
+	EXTI->IMR|=(EXTI_IMR_MR1);
+	//Прерывания на ногах по нарастающему фронту
+	EXTI->FTSR|=(EXTI_RTSR_TR1);
+	//Разрешаем оба прерывания
+	NVIC_EnableIRQ(EXTI1_IRQn);
 }
 
 void usartESP_init(void)
@@ -166,4 +189,19 @@ void timer_init(void)
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_InitStructure);
 
+}
+
+void I2C1_init(void)
+{
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_I2C1, ENABLE);
+
+	I2C_InitTypeDef I2C_InitStructure;
+	I2C_StructInit(&I2C_InitStructure);
+	I2C_InitStructure.I2C_ClockSpeed = 100000;
+	I2C_InitStructure.I2C_OwnAddress1 = 1;
+	I2C_InitStructure.I2C_Ack = I2C_Ack_Enable;
+	I2C_Init(I2C1, &I2C_InitStructure);
+	I2C_Cmd(I2C1, ENABLE);
+	I2C_AcknowledgeConfig(I2C1, ENABLE);
 }

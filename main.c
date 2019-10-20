@@ -1,6 +1,8 @@
 #include "init.h"
 #include "dwt_delay.h"
 #include "usartESP.h"
+#include "i2c.h"
+#include "ds3231.h"
 
 
 void chan(void){
@@ -38,6 +40,26 @@ void TIM3_IRQHandler(void)
 	TIM_ClearITPendingBit(TIM3, ((uint16_t)0x0001));// Обязательно сбрасываем флаг
 }
 
+void EXTI1_IRQHandler(void)//будильник
+{
+	EXTI->PR|=EXTI_PR_PR1; //Очищаем флаг
+	ds3231_del_alarm();
+	chan();
+	//get_alarm();
+}
+
+//void get_alarm(void)//будильник
+//{
+//	if(stat_alarm & ALARM_CHAN){
+//		chan();
+//	}
+//	if(stat_alarm & ALARM_LIGHT){
+//	}
+//	if(stat_alarm & ALARM_SING){
+//	}
+//	if(stat_alarm & ALARM_WINDOW){
+//	}
+//}
 
 
 int main(void)
@@ -51,7 +73,9 @@ int main(void)
 	ports_init();
 	timer_init();
 	usartESP_init();
+	I2C1_init();
 
+	DS3231_init();
 	DWT_Delay_sec(5);
 
     while(1)
@@ -69,9 +93,55 @@ int main(void)
 					case SWITCH_LIGHT:
 						chan();
 						break;
-				}
-				itoa(BUF_SIZE, count, 10);
-				way_cmd = INIT_SENDMES;
+					case SET_TIME://команда связана с GET_TIME. Обе команды служат для синхронизации времени с телефоном
+						for(uint8_t i = 3; i; i--)
+							I2C_single_write(DS_ADDRESS, (i-1), RX_BUF[4-i]);//Запись времени от телефона в модуль
+
+					case GET_TIME:
+						for(uint8_t i = 3; i; i--)
+							TX_BUF[4-i] = I2C_single_read(DS_ADDRESS, (i-1));//Чтение времени
+						break;
+
+					case GET_SET_ALARM:
+						if(RX_BUF[5]){//Блок выполняется, если пользователь перенастроил будильник
+							//stat_alarm = RX_BUF[6];
+							TX_BUF[6] = RX_BUF[6];
+							if(RX_BUF[4]!=2)//Выполнять только если было изменение состояния будильника
+								ds3231_on_alarm(RX_BUF[4]);
+
+							if(RX_BUF[4]==2){//Выполнять если изменилось время будильника
+								for(uint8_t i = 3; i; i--)
+									I2C_single_write(DS_ADDRESS, (i+6), RX_BUF[4-i]);
+							}
+							//I2C_single_write(DS_ADDRESS, 0x0A, 0b10000000);
+						}
+
+						for(uint8_t i = 3; i; i--)
+							TX_BUF[4-i] = I2C_single_read(DS_ADDRESS, (i+6));//Чтение времени будильника
+
+						TX_BUF[4] = I2C_single_read(DS_ADDRESS, DS3231_CONTROL) & (1 << DS3231_A1IE);//Чтение состояния будильника
+						break;
+
+					case GET_SENSORS:
+						switch(RX_BUF[1]) {
+
+						/*case 0:
+							get_sensors |= TEMPERATURE|CARBONEUM;
+							way_cmd = WAIT;
+							break;
+
+						case 1:
+							get_sensors &= ~(TEMPERATURE|CARBONEUM);
+							itoa(BUF_SIZE, count, 10);
+							way_cmd = INIT_SENDMES;
+							break;*/
+
+						}
+					}
+					if(TX_BUF[0]!=GET_SENSORS){
+						itoa(BUF_SIZE, count, 10);
+						way_cmd = INIT_SENDMES;
+					}
 				break;
 
 

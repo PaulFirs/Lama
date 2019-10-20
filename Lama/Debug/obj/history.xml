@@ -1,40 +1,46 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
    <processor signature="arm-none-eabi-gcc noversion nomachine -mcpu=cortex-m3 -mthumb -Wall -ffunction-sections -g -O0 -c -DSTM32F103C8 -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -D__ASSEMBLY__ -I..\..\..\workspace\Lama\cmsis_boot -I..\..\..\workspace\Lama\cmsis -I..\..\..\workspace\Lama -I..\..\..\workspace\Lama\peripheral -I..\..\..\workspace -I..\..\.. -I..\..\..\workspace\Lama\stm_lib\inc -I..\..\..\workspace\Lama\stm_lib">
-      <target file="stm32f10x_tim.o" lastModified="16de9f43e81">
+      <target file="ds3231.o" lastModified="16dea617708">
+         <source file="..\..\..\peripheral\ds3231.c" lastModified="16de32ac3ef"/>
+      </target>
+      <target file="stm32f10x_tim.o" lastModified="16dea617671">
          <source file="..\..\..\stm_lib\src\stm32f10x_tim.c" lastModified="16de334753d"/>
       </target>
-      <target file="stm32f10x_i2c.o" lastModified="16de9f441f0">
+      <target file="stm32f10x_i2c.o" lastModified="16dea617a8d">
          <source file="..\..\..\stm_lib\src\stm32f10x_i2c.c" lastModified="16de3344c85"/>
       </target>
-      <target file="system_stm32f10x.o" lastModified="16de9f43ec1">
+      <target file="i2c.o" lastModified="16dea61775b">
+         <source file="..\..\..\peripheral\i2c.c" lastModified="16de32ac3ef"/>
+      </target>
+      <target file="system_stm32f10x.o" lastModified="16dea61779e">
          <source file="..\..\..\cmsis_boot\system_stm32f10x.c" lastModified="16de3343c4a"/>
       </target>
-      <target file="usartESP.o" lastModified="16de9f4424d">
+      <target file="usartESP.o" lastModified="16dea617afd">
          <source file="..\..\..\peripheral\usartESP.c" lastModified="16de961bfea"/>
       </target>
-      <target file="init.o" lastModified="16de9f44082">
-         <source file="..\..\..\init.c" lastModified="16de9f03751"/>
+      <target file="init.o" lastModified="16dea617942">
+         <source file="..\..\..\init.c" lastModified="16dea03e49a"/>
       </target>
-      <target file="main.o" lastModified="16de9f43fed">
-         <source file="..\..\..\main.c" lastModified="16de9f03740"/>
+      <target file="main.o" lastModified="16dea6178a1">
+         <source file="..\..\..\main.c" lastModified="16dea0e346e"/>
       </target>
-      <target file="stm32f10x_usart.o" lastModified="16de9f44151">
+      <target file="stm32f10x_usart.o" lastModified="16dea6179ef">
          <source file="..\..\..\stm_lib\src\stm32f10x_usart.c" lastModified="16de33458fa"/>
       </target>
-      <target file="stm32f10x_gpio.o" lastModified="16de9f43f40">
+      <target file="stm32f10x_gpio.o" lastModified="16dea61781f">
          <source file="..\..\..\stm_lib\src\stm32f10x_gpio.c" lastModified="16de3343c18"/>
       </target>
-      <target file="dwt_delay.o" lastModified="16de9f44035">
-         <source file="..\..\..\dwt_delay.c" lastModified="16de32ac3ef"/>
-      </target>
-      <target file="stm32f10x_rcc.o" lastModified="16de9f440d2">
+      <target file="stm32f10x_rcc.o" lastModified="16dea617995">
          <source file="..\..\..\stm_lib\src\stm32f10x_rcc.c" lastModified="16de3343c9d"/>
       </target>
-      <target file="startup_stm32f10x_md.o" lastModified="16de9f43ef3">
+      <target file="dwt_delay.o" lastModified="16dea6178eb">
+         <source file="..\..\..\dwt_delay.c" lastModified="16de32ac3ef"/>
+      </target>
+      <target file="startup_stm32f10x_md.o" lastModified="16dea6177d2">
          <source file="..\..\..\cmsis_boot\startup\startup_stm32f10x_md.c" lastModified="16de3343c2d"/>
       </target>
-      <target file="misc.o" lastModified="16de9f44198">
+      <target file="misc.o" lastModified="16dea617a30">
          <source file="..\..\..\stm_lib\src\misc.c" lastModified="16de3345fde"/>
       </target>
    </processor>
