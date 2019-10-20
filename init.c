@@ -75,6 +75,13 @@ void ports_init(void)
 
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_GPIOB | RCC_APB2Periph_GPIOC, ENABLE);
 
+
+	/* Configure (PC.13) as alternate function push-pull */
+	port.GPIO_Speed = GPIO_Speed_50MHz;
+	port.GPIO_Mode = GPIO_Mode_Out_PP;
+	port.GPIO_Pin = GPIO_Pin_13;
+	GPIO_Init(GPIOC, &port);
+
 	/* Configure Pins (PA.0,1,2,3,4) as output for indicate */
 	/* Pins 0,1,2 - debug indicators*/
 	/* Pin 3 - tx radio modle data*/

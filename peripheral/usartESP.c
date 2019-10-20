@@ -1,6 +1,6 @@
 #include "usartESP.h"
 
-inline void clear_Buffer(uint8_t pucBuffer[BUF_SIZE], uint8_t size) {
+inline void clear_Buffer(char pucBuffer[BUF_SIZE], uint8_t size) {
 
     for (uint8_t i=0;i<size;i++){
     	pucBuffer[i] = '\0';
@@ -54,7 +54,7 @@ void USART1_IRQHandler(void)
 					RXi++;
 					if (RXi > RX_BUF_SIZE-1)
 					{
-						clear_Buffer(RX_BUF, BUF_SIZE);
+						clear_Buffer(RX_BUF, RX_BUF_SIZE);
 					}
 
 				}
@@ -70,14 +70,15 @@ void USART1_IRQHandler(void)
 			switch(way_cmd){
 				case(ID):
 					if(RXc == ':'){
-						id = RX_BUF[0];
-						id_rx = atoi (&RX_BUF[2]);
-						clear_Buffer(RX_BUF, BUF_SIZE);
+						id = RX_BUF[4];
+						id_rx = atoi (&RX_BUF[6]);
+						clear_Buffer(RX_BUF, RX_BUF_SIZE);
 						way_cmd = RX_MODE;
 					}
 					break;
 				case(RX_MODE):
 						if(RXi == id_rx){
+							GPIOC->ODR^=GPIO_Pin_13;
 							way_cmd = DECODE;
 						}
 					break;
@@ -88,18 +89,66 @@ void USART1_IRQHandler(void)
 					}
 					break;
 				case(WAIT):
-					if(strstr(RX_BUF, "+IPD,")){
+					/*if(RXc == ':'){
+
+						id = RX_BUF[RXi - 1 - 1 - 1 - 1];
+						id_rx = atoi (&RX_BUF[RXi - 1 - 1]);
+						clear_Buffer(RX_BUF, BUF_SIZE);
+						way_cmd = RX_MODE;
+					}*/
+
+					if(RXc == '+'){
+						way_cmd = ID;
+						clear_Buffer(RX_BUF, RX_BUF_SIZE);
+					}
+					/*if(strstr(RX_BUF, "+IPD,")){
 						way_cmd = ID;
 						clear_Buffer(RX_BUF, BUF_SIZE);
 
-					}
-					if(strstr(RX_BUF, "0,CLOSED")){
+					}*/
+					/*if(strstr(RX_BUF, "0,CLOSED")){
 						clear_Buffer(RX_BUF, BUF_SIZE);
 						init = 1;
 						way_cmd = INIT_ESP;
+					}*/
+					switch(way_closed){
+						case(C):
+							if(RXc == 'C'){
+								way_closed = L;
+							}
+							break;
+						case(L):
+							if(RXc == 'L'){
+								way_closed = O;
+							}
+							break;
+						case(O):
+							if(RXc == 'O'){
+								way_closed = S;
+							}
+							break;
+						case(S):
+							if(RXc == 'S'){
+								way_closed = E;
+							}
+							break;
+						case(E):
+							if(RXc == 'E'){
+								way_closed = D;
+							}
+							break;
+						case(D):
+							if(RXc == 'D'){
+								clear_Buffer(RX_BUF, RX_BUF_SIZE);
+								init = 1;
+								way_cmd = INIT_ESP;
+								way_closed = C;
+							}
+							break;
 					}
 					break;
 			}
+
 		}
 	}
 }
@@ -109,7 +158,7 @@ void uart_wite_for(char *str) {
 
 	while (result == 0){
 		FLAG_REPLY = 0;
-		clear_Buffer(RX_BUF, BUF_SIZE);
+		clear_Buffer(RX_BUF, RX_BUF_SIZE);
 		while (FLAG_REPLY == 0) {
 
 		}
@@ -130,4 +179,6 @@ void init_ESP(void)
 	uart_wite_for("OK");
 
 	uart_wite_for("0,CONNECT");
+
+	clear_Buffer(RX_BUF, RX_BUF_SIZE);
 }

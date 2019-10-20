@@ -40,6 +40,7 @@ int main(void)
 {
 	init = 1;
 	way_cmd = INIT_ESP;
+	way_closed = C;
 
 	SetSysClockTo72();
 	DWT_Init();
@@ -47,7 +48,6 @@ int main(void)
 	usartESP_init();
 
 	DWT_Delay_sec(5);
-
 
     while(1)
     {
@@ -62,7 +62,6 @@ int main(void)
 				TX_BUF[0] = RX_BUF[0];//копирование ответной команды
 				switch (RX_BUF[0]) {            //читаем первый принятый байт-команду
 					case SWITCH_LIGHT:
-						GPIOC->ODR^=GPIO_Pin_13;
 						chan();
 						break;
 				}
@@ -88,9 +87,11 @@ int main(void)
 
 
 			case END:
-				clear_Buffer(RX_BUF, BUF_SIZE);
+				clear_Buffer(RX_BUF, RX_BUF_SIZE);
 				clear_Buffer(TX_BUF, BUF_SIZE);
 				way_cmd = WAIT;
+
+				//GPIOC->ODR^=GPIO_Pin_13;
 				break;
 		}
     }

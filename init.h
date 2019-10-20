@@ -69,7 +69,7 @@
 //Данные по TCP
 uint8_t RXi; // Счетчик массива RX_BUF
 uint8_t RXc; // Переменная для хранения пришедшего байта
-uint8_t RX_BUF[RX_BUF_SIZE]; //Принятый масив
+char RX_BUF[RX_BUF_SIZE]; //Принятый масив
 uint8_t TX_BUF[BUF_SIZE];//Принятые команды с параметрами
 
 uint8_t init; 	// Состояние подключения клиента к модулю
@@ -96,8 +96,16 @@ END
 };
 
 
+uint8_t way_closed;
 
-
+enum do_closed{
+C,
+L,
+O,
+S,
+E,
+D
+};
 
 
 
