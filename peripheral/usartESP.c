@@ -1,6 +1,6 @@
 #include "usartESP.h"
 
-inline void clear_Buffer(char pucBuffer[BUF_SIZE], uint8_t size) {
+inline void clear_Buffer(char *pucBuffer, uint8_t size) {
 
     for (uint8_t i=0;i<size;i++){
     	pucBuffer[i] = '\0';
@@ -19,7 +19,7 @@ void USARTSendSTR(const char *pucBuffer)
 		}
 	}
 }
-void USARTSendCMD(uint8_t pucBuffer[BUF_SIZE], uint8_t size)
+void USARTSendCMD(uint8_t *pucBuffer, uint8_t size)
 {
     for (uint8_t i=0;i<size;i++)
     {
@@ -78,7 +78,6 @@ void USART1_IRQHandler(void)
 					break;
 				case(RX_MODE):
 						if(RXi == id_rx){
-							GPIOC->ODR^=GPIO_Pin_13;
 							way_cmd = DECODE;
 						}
 					break;
@@ -89,14 +88,6 @@ void USART1_IRQHandler(void)
 					}
 					break;
 				case(WAIT):
-					/*if(RXc == ':'){
-
-						id = RX_BUF[RXi - 1 - 1 - 1 - 1];
-						id_rx = atoi (&RX_BUF[RXi - 1 - 1]);
-						clear_Buffer(RX_BUF, BUF_SIZE);
-						way_cmd = RX_MODE;
-					}*/
-
 					if(RXc == '+'){
 						way_cmd = ID;
 						clear_Buffer(RX_BUF, RX_BUF_SIZE);
@@ -113,34 +104,30 @@ void USART1_IRQHandler(void)
 					}*/
 					switch(way_closed){
 						case(C):
-							if(RXc == 'C'){
+							if(RXc == 'C')
 								way_closed = L;
-							}
 							break;
 						case(L):
-							if(RXc == 'L'){
+							if(RXc == 'L')
 								way_closed = O;
-							}
 							break;
 						case(O):
-							if(RXc == 'O'){
+							if(RXc == 'O')
 								way_closed = S;
-							}
 							break;
 						case(S):
-							if(RXc == 'S'){
+							if(RXc == 'S')
 								way_closed = E;
-							}
 							break;
 						case(E):
-							if(RXc == 'E'){
+							if(RXc == 'E')
 								way_closed = D;
-							}
 							break;
 						case(D):
 							if(RXc == 'D'){
 								clear_Buffer(RX_BUF, RX_BUF_SIZE);
 								init = 1;
+								get_sensors = 0;
 								way_cmd = INIT_ESP;
 								way_closed = C;
 							}
@@ -148,6 +135,12 @@ void USART1_IRQHandler(void)
 					}
 					break;
 			}
+		}
+		if(strstr(RX_BUF, "ERROR")){
+			init = 1;
+			get_sensors = 0;
+			way_cmd = INIT_ESP;
+			clear_Buffer(RX_BUF, RX_BUF_SIZE);
 
 		}
 	}

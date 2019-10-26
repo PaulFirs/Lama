@@ -80,6 +80,22 @@ uint8_t error_i2c;
 #define GET_SET_ALARM 		0x03
 #define GET_SENSORS			0x04
 
+
+/*
+ * SubComands for Sensors
+ */
+
+#define DELAY_SENSORS		40
+#define GET_TEMP			0x01
+#define GET_CARB			0x02
+
+/*
+* Getting sensors
+*/
+
+#define TEMPERATURE			0b001
+#define CARBONEUM			0b010
+
 //-------------------------------------------//
 //		Настройки для управления люстрой	 //
 //-------------------------------------------//
@@ -141,6 +157,10 @@ D
 };
 
 
+uint8_t get_sensors;
+uint8_t RX_BUF_CO[BUF_SIZE];//Принятые команды с параметрами
+
+volatile uint8_t RXi_MH; // Счетчик массива RX_BUF
 
 //Методы и функции
 void SetSysClockTo72(void);

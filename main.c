@@ -4,6 +4,8 @@
 #include "i2c.h"
 #include "ds3231.h"
 
+const uint8_t getppm[9]			= {0xff, 0x01, 0x86, 0x00, 0x00, 0x00, 0x00, 0x00, 0x79};
+
 
 void chan(void){
 	for(uint8_t i = 3; i; i--){	//3 раз отправляет 0b0000000111110110011100000 для верности.
@@ -29,12 +31,11 @@ void chan(void){
 
 void TIM3_IRQHandler(void)
 {
-	static uint8_t timer_sensors = 0;
 	if (TIM_GetITStatus(TIM3, ((uint16_t)0x0001)) != RESET)
 	{
+
 		if (!GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_0)) {//нажата кнопка ручного включения люстры
 			chan();
-			//way_cmd = WAIT;
 		}
 	}
 	TIM_ClearITPendingBit(TIM3, ((uint16_t)0x0001));// Обязательно сбрасываем флаг
@@ -64,20 +65,25 @@ void EXTI1_IRQHandler(void)//будильник
 
 int main(void)
 {
+	//инициализация переменных
 	init = 1;
 	way_cmd = INIT_ESP;
 	way_closed = C;
+	get_sensors = 0;
 
+	//инициализация периферии
 	SetSysClockTo72();
-	DWT_Init();
 	ports_init();
-	timer_init();
+	DWT_Init();
 	usartESP_init();
+	timer_init();
 	I2C1_init();
 
+	//инициализация модулей
 	DS3231_init();
-	DWT_Delay_sec(5);
+	DWT_Delay_sec(5); // задержка для инициализации ESP
 
+	GPIOC->ODR^=GPIO_Pin_13;
     while(1)
     {
     	switch(way_cmd){
@@ -113,7 +119,6 @@ int main(void)
 								for(uint8_t i = 3; i; i--)
 									I2C_single_write(DS_ADDRESS, (i+6), RX_BUF[4-i]);
 							}
-							//I2C_single_write(DS_ADDRESS, 0x0A, 0b10000000);
 						}
 
 						for(uint8_t i = 3; i; i--)
@@ -125,23 +130,15 @@ int main(void)
 					case GET_SENSORS:
 						switch(RX_BUF[1]) {
 
-						/*case 0:
-							get_sensors |= TEMPERATURE|CARBONEUM;
-							way_cmd = WAIT;
+						case GET_TEMP:
+							TX_BUF[0] = GET_SENSORS;
+							TX_BUF[1] = GET_TEMP;
+							TX_BUF[2] = DS3231_read_temp();//Чтение темпеатуры из модуля
 							break;
-
-						case 1:
-							get_sensors &= ~(TEMPERATURE|CARBONEUM);
-							itoa(BUF_SIZE, count, 10);
-							way_cmd = INIT_SENDMES;
-							break;*/
-
 						}
 					}
-					if(TX_BUF[0]!=GET_SENSORS){
-						itoa(BUF_SIZE, count, 10);
-						way_cmd = INIT_SENDMES;
-					}
+					itoa(BUF_SIZE, count, 10);
+					way_cmd = INIT_SENDMES;
 				break;
 
 
@@ -165,8 +162,6 @@ int main(void)
 				clear_Buffer(RX_BUF, RX_BUF_SIZE);
 				clear_Buffer(TX_BUF, BUF_SIZE);
 				way_cmd = WAIT;
-
-				//GPIOC->ODR^=GPIO_Pin_13;
 				break;
 		}
     }

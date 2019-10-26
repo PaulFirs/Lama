@@ -102,6 +102,18 @@ void ports_init(void)
 	port.GPIO_Pin = GPIO_Pin_10;
 	GPIO_Init(GPIOA, &port);
 
+	/* Configure USART3 Tx (PB.10) as alternate function push-pull */
+	port.GPIO_Speed = GPIO_Speed_50MHz;
+	port.GPIO_Mode = GPIO_Mode_AF_PP;
+	port.GPIO_Pin = GPIO_Pin_10;
+	GPIO_Init(GPIOB, &port);
+
+	/* Configure USART3 Rx (PB.11) as input floating */
+	port.GPIO_Speed = GPIO_Speed_50MHz;
+	port.GPIO_Mode = GPIO_Mode_IN_FLOATING;//болтающийся в воздухе пин, чтоб к нему подвести TX (она же имеет 3В!!!)
+	port.GPIO_Pin = GPIO_Pin_11;
+	GPIO_Init(GPIOB, &port);
+
 	/* Configure Pin (PB.6,7) as SCK and SDA for I2C */
 	port.GPIO_Speed = GPIO_Speed_2MHz;
 	port.GPIO_Mode = GPIO_Mode_AF_OD;
