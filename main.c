@@ -70,7 +70,6 @@ int main(void)
 	init = 1;
 	way_cmd = INIT_ESP;
 	way_closed = C;
-	get_sensors = 0;
 
 	//инициализация периферии
 	SetSysClockTo72();

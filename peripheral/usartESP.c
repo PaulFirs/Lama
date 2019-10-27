@@ -1,6 +1,6 @@
 #include "usartESP.h"
 
-inline void clear_Buffer(char *pucBuffer, uint8_t size) {
+inline void clear_Buffer(uint8_t *pucBuffer, uint8_t size) {
 
     for (uint8_t i=0;i<size;i++){
     	pucBuffer[i] = '\0';
@@ -97,12 +97,12 @@ void USART1_IRQHandler(void)
 						clear_Buffer(RX_BUF, BUF_SIZE);
 
 					}*/
-					/*if(strstr(RX_BUF, "0,CLOSED")){
-						clear_Buffer(RX_BUF, BUF_SIZE);
+					if(strstr(RX_BUF, "CLOSED")){
+						clear_Buffer(RX_BUF, RX_BUF_SIZE);
 						init = 1;
 						way_cmd = INIT_ESP;
-					}*/
-					switch(way_closed){
+					}
+					/*switch(way_closed){
 						case(C):
 							if(RXc == 'C')
 								way_closed = L;
@@ -127,18 +127,16 @@ void USART1_IRQHandler(void)
 							if(RXc == 'D'){
 								clear_Buffer(RX_BUF, RX_BUF_SIZE);
 								init = 1;
-								get_sensors = 0;
 								way_cmd = INIT_ESP;
 								way_closed = C;
 							}
 							break;
-					}
+					}*/
 					break;
 			}
 		}
 		if(strstr(RX_BUF, "ERROR")){
 			init = 1;
-			get_sensors = 0;
 			way_cmd = INIT_ESP;
 			clear_Buffer(RX_BUF, RX_BUF_SIZE);
 

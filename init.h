@@ -14,14 +14,123 @@
 #include <stdlib.h>
 
 
+//-------------------------------------------//
+//			Настройки модуля ESP			 //
+//-------------------------------------------//
+
+//Настройки и константы
+#define RX_BUF_SIZE		128// Размер максимального пакета который можно принять
+#define BUF_SIZE 		9//Размер пакета с командами
+
+
+//Данные по TCP от ESP
+uint8_t RXi; // Счетчик массива RX_BUF
+uint8_t RXc; // Переменная для хранения пришедшего байта
+uint8_t RX_BUF[RX_BUF_SIZE]; //Принятый масив
+uint8_t TX_BUF[BUF_SIZE];//Принятые команды с параметрами
+
+uint8_t init; 	// Состояние подключения клиента к модулю
+				// 1 - Нет подключенных (Переинициализируется модуль и ожидает клиента)
+				// 0 - Клиент подключен (Начинается взаимодействие с ним)
+uint8_t id;		// Номер сокета к которому подключился клиент (сквозной номер клиента)
+uint8_t id_rx;	// Количество принятых байт
+uint8_t FLAG_REPLY;	// Флаг для приема ответных команд AT
 
 
 
-uint8_t error_i2c;
+//-------------------------------------------//
+//			Протокол взаимодействия			 //
+//-------------------------------------------//
+
+//Comands
+#define SWITCH_LIGHT		0x00
+#define GET_TIME 			0x01
+#define SET_TIME 			0x02
+#define GET_SET_ALARM 		0x03
+#define GET_SENSORS			0x04
+
+
 /*
- * DS3231
+ * SubComands for Sensors
  */
+#define DELAY_SENSORS		40
+#define GET_TEMP			0x01
+#define GET_CARB			0x02
 
+
+
+
+
+
+
+typedef struct{
+	uint8_t null;
+}t_swtch_light;
+
+typedef struct{
+	uint8_t h_m_s[3];
+}t_time;
+
+
+typedef struct{
+	uint8_t time[3];
+	uint8_t status;
+	uint8_t settings;
+}t_alarm;
+
+typedef struct{
+	uint8_t temp;
+	uint16_t co2;
+
+}t_sensors;
+
+typedef struct{
+	uint8_t cmd_type;
+
+	union{
+		t_swtch_light swtch_light;
+		t_time time;
+		t_alarm alarm;
+		t_sensors sensors;
+	}arg;
+
+}t_cmd;
+
+
+
+
+
+
+
+//-------------------------------------------//
+//		Настройки для модулей и периферии	 //
+//-------------------------------------------//
+
+
+//настройки MH-Z19
+uint8_t RXi_MH; // Счетчик принятого массива от MH-Z19
+
+
+
+
+//настройки люстры
+#define DELAY_POUSE    242					//Длительность четверти бита, мкс
+#define DELAY_BIT      3*DELAY_POUSE		//Длительность трех четвертей бита, мкс
+
+#define DELAY_MESSAGE  28*DELAY_POUSE		//Задержка между сообщениями, мс
+
+#define MES   0b0000000111110110011100000	//Управляющее слово для люстры
+
+//макроопределения для управления выводом A3 (сигнал на радиомодуль)
+#define A3_ENABLE         GPIOA->BSRR = GPIO_BSRR_BS3;
+#define A3_DISABLE    	  GPIOA->BSRR = GPIO_BSRR_BR3;
+
+
+
+
+
+
+//Настройки DS3231
 #define DS_ADDRESS            		0xD0
 #define DS_ADDRESS_WRITE            (DS_ADDRESS|0)
 #define DS_ADDRESS_READ             (DS_ADDRESS|1)
@@ -53,84 +162,23 @@ uint8_t error_i2c;
 
 
 
+//------------------------------------------//
+//				Обработка ошибок		 	//
+//------------------------------------------//
+
+//i2c
+uint8_t error_i2c;
 
 
 
 
 
-
-
-
-
-
-
-
-
-//Настройки и контанты
-#define RX_BUF_SIZE		128// Размер максимального пакета который можно принять
-#define BUF_SIZE 		9//Размер пакета с командами
-
-
- /*
-  * Comands for I2C
-  */
-#define SWITCH_LIGHT		0x00
-#define GET_TIME 			0x01
-#define SET_TIME 			0x02
-#define GET_SET_ALARM 		0x03
-#define GET_SENSORS			0x04
-
-
-/*
- * SubComands for Sensors
- */
-
-#define DELAY_SENSORS		40
-#define GET_TEMP			0x01
-#define GET_CARB			0x02
-
-/*
-* Getting sensors
-*/
-
-#define TEMPERATURE			0b001
-#define CARBONEUM			0b010
-
-//-------------------------------------------//
-//		Настройки для управления люстрой	 //
-//-------------------------------------------//
-
-
-#define DELAY_POUSE    242					//Длительность четверти бита, мкс
-#define DELAY_BIT      3*DELAY_POUSE		//Длительность трех четвертей бита, мкс
-
-#define DELAY_MESSAGE  28*DELAY_POUSE		//Задержка между сообщениями, мс
-
-#define MES   0b0000000111110110011100000	//Управляющее слово для люстры
-
-//макроопределения для управления выводом A3 (сигнал на радиомодуль)
-#define A3_ENABLE         GPIOA->BSRR = GPIO_BSRR_BS3;
-#define A3_DISABLE    	  GPIOA->BSRR = GPIO_BSRR_BR3;
-
-
-
-
-//Данные по TCP
-uint8_t RXi; // Счетчик массива RX_BUF
-uint8_t RXc; // Переменная для хранения пришедшего байта
-char RX_BUF[RX_BUF_SIZE]; //Принятый масив
-uint8_t TX_BUF[BUF_SIZE];//Принятые команды с параметрами
-
-uint8_t init; 	// Состояние подключения клиента к модулю
-				// 1 - Нет подключенных (Переинициализируется модуль и ожидает клиента)
-				// 0 - Клиент подключен (Начинается взаимодействие с ним)
-uint8_t id;		// Номер сокета к которому подключился клиент (сквозной номер клиента)
-uint8_t id_rx;	// Количество принятых байт
-uint8_t FLAG_REPLY;	// Флаг для ожидания нужного сообщения от модуля
-uint8_t way_cmd;
-
+//------------------------------------------//
+//				Логика взамодействия	 	//
+//------------------------------------------//
 char count[3]; // количество отправляемых символов
 
+uint8_t way_cmd;
 enum do_for_esp{
 
 WAIT,
@@ -146,7 +194,6 @@ END
 
 
 uint8_t way_closed;
-
 enum do_closed{
 C,
 L,
@@ -157,10 +204,6 @@ D
 };
 
 
-uint8_t get_sensors;
-uint8_t RX_BUF_CO[BUF_SIZE];//Принятые команды с параметрами
-
-volatile uint8_t RXi_MH; // Счетчик массива RX_BUF
 
 //Методы и функции
 void SetSysClockTo72(void);
