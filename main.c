@@ -1,6 +1,7 @@
 #include "init.h"
 #include "dwt_delay.h"
 #include "usartESP.h"
+#include "usartMH.h"
 #include "i2c.h"
 #include "ds3231.h"
 
@@ -73,17 +74,16 @@ int main(void)
 
 	//инициализация периферии
 	SetSysClockTo72();
-	ports_init();
 	DWT_Init();
+	ports_init();
 	usartESP_init();
 	timer_init();
 	I2C1_init();
 
 	//инициализация модулей
 	DS3231_init();
-	DWT_Delay_sec(5); // задержка для инициализации ESP
-
-	GPIOC->ODR^=GPIO_Pin_13;
+	DWT_Delay_ms(1000); // задержка для инициализации ESP
+	usartCN_init();
     while(1)
     {
     	switch(way_cmd){
@@ -134,6 +134,15 @@ int main(void)
 							TX_BUF[0] = GET_SENSORS;
 							TX_BUF[1] = GET_TEMP;
 							TX_BUF[2] = DS3231_read_temp();//Чтение темпеатуры из модуля
+							break;
+
+
+						case GET_CARB:
+							USART3SendCMD(getppm, BUF_SIZE);
+							GetCO2();
+
+							TX_BUF[0] = GET_SENSORS;
+							TX_BUF[1] = GET_CARB;
 							break;
 						}
 					}

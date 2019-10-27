@@ -178,6 +178,32 @@ void usartESP_init(void)
 }
 
 
+void usartCN_init(void)
+{
+    /* Enable USART1 and GPIOA clock */
+    RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART3, ENABLE);
+
+
+    /* Configure the USART1 */
+    USART_InitTypeDef USART_InitStructure;
+
+    USART_InitStructure.USART_BaudRate = 9600;
+    USART_InitStructure.USART_WordLength = USART_WordLength_8b;
+    USART_InitStructure.USART_StopBits = USART_StopBits_1;
+    USART_InitStructure.USART_Parity = USART_Parity_No;
+    USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
+    USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
+
+    USART_Init(USART3, &USART_InitStructure);
+
+    /* Enable USART1 */
+    USART_Cmd(USART3, ENABLE);
+
+    /* Enable the USART1 Receive interrupt: this interrupt is generated when the
+        USART1 receive data register is not empty */
+    USART_ITConfig(USART3, USART_IT_RXNE, ENABLE);
+
+}
 void timer_init(void)
 {
 

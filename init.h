@@ -169,5 +169,6 @@ void ports_init(void);
 void usartESP_init(void);
 void timer_init(void);
 void I2C1_init(void);
+void usartCN_init(void);
 
 #endif
