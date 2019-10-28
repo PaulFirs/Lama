@@ -97,11 +97,11 @@ void USART1_IRQHandler(void)
 						clear_Buffer(RX_BUF, BUF_SIZE);
 
 					}*/
-					if(strstr(RX_BUF, "CLOSED")){
+					/*if(strstr(RX_BUF, "CLOSED")){
 						clear_Buffer(RX_BUF, RX_BUF_SIZE);
 						init = 1;
 						way_cmd = INIT_ESP;
-					}
+					}*/
 					/*switch(way_closed){
 						case(C):
 							if(RXc == 'C')
@@ -169,7 +169,7 @@ void init_ESP(void)
 	USARTSendSTR("AT+CIPSERVER=1,48778\r\n");
 	uart_wite_for("OK");
 
-	uart_wite_for("0,CONNECT");
+	//uart_wite_for("0,CONNECT");
 
 	clear_Buffer(RX_BUF, RX_BUF_SIZE);
 }
