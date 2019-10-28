@@ -127,23 +127,14 @@ int main(void)
 						break;
 
 					case GET_SENSORS:
-						switch(RX_BUF[1]) {
 
-						case GET_TEMP:
-							TX_BUF[0] = GET_SENSORS;
-							TX_BUF[1] = GET_TEMP;
-							TX_BUF[2] = DS3231_read_temp();//Чтение темпеатуры из модуля
-							break;
+						USART3SendCMD(getppm, BUF_SIZE);
+						GetCO2();
 
+						TX_BUF[0] = GET_SENSORS;
+						TX_BUF[1] = DS3231_read_temp();//Чтение темпеатуры из модуля
 
-						case GET_CARB:
-							USART3SendCMD(getppm, BUF_SIZE);
-							GetCO2();
-
-							TX_BUF[0] = GET_SENSORS;
-							TX_BUF[1] = GET_CARB;
-							break;
-						}
+						break;
 					}
 					itoa(BUF_SIZE, count, 10);
 					way_cmd = INIT_SENDMES;

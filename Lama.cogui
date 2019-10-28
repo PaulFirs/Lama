@@ -6,59 +6,52 @@
 <perspectiveBar/>
 <page focus="true" label="Workspace - CooCox CoBuilder">
 <editors>
-<editorArea activeWorkbook="DefaultEditorWorkbook">
+<editorArea activeWorkbook="org.eclipse.ui.internal.EditorStack@33c48d">
 <info part="DefaultEditorWorkbook">
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
-<part id="2"/>
-<part id="3"/>
-<part id="4"/>
-<part id="5"/>
+</presentation>
+</folder>
+</info>
+<info part="org.eclipse.ui.internal.EditorStack@33c48d" ratio="0.5" ratioLeft="929" ratioRight="929" relationship="2" relative="DefaultEditorWorkbook">
+<folder appearance="1" expanded="2">
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="D:/Program/CooCox/CoIDE/workspace/Lama/main.c" title="main.c" tooltip="D:/Program/CooCox/CoIDE/workspace/Lama/main.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Lama/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="6" selectionOffset="3474" selectionTopPixel="2173"/>
-</editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="init.c" partName="init.c" path="D:/Program/CooCox/CoIDE/workspace/Lama/init.c" title="init.c" tooltip="D:/Program/CooCox/CoIDE/workspace/Lama/init.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Lama/init.c"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="7253" selectionTopPixel="2600"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="init.h" partName="init.h" path="D:/Program/CooCox/CoIDE/workspace/Lama/init.h" title="init.h" tooltip="D:/Program/CooCox/CoIDE/workspace/Lama/init.h" workbook="DefaultEditorWorkbook">
+<editor focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="init.h" partName="init.h" path="D:/Program/CooCox/CoIDE/workspace/Lama/init.h" title="init.h" tooltip="D:/Program/CooCox/CoIDE/workspace/Lama/init.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Lama/init.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3614" selectionTopPixel="2346"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4151" selectionTopPixel="2824"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="usartESP.c" partName="usartESP.c" path="D:/Program/CooCox/CoIDE/workspace/Lama/peripheral/usartESP.c" title="usartESP.c" tooltip="D:/Program/CooCox/CoIDE/workspace/Lama/peripheral/usartESP.c" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="D:/Program/CooCox/CoIDE/workspace/Lama/main.c" title="main.c" tooltip="D:/Program/CooCox/CoIDE/workspace/Lama/main.c" workbook="org.eclipse.ui.internal.EditorStack@33c48d">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Lama/main.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3216" selectionTopPixel="1891"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="usartESP.c" partName="usartESP.c" path="D:/Program/CooCox/CoIDE/workspace/Lama/peripheral/usartESP.c" title="usartESP.c" tooltip="D:/Program/CooCox/CoIDE/workspace/Lama/peripheral/usartESP.c" workbook="org.eclipse.ui.internal.EditorStack@33c48d">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Lama/peripheral/usartESP.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1070" selectionTopPixel="344"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="dwt_delay.c" partName="dwt_delay.c" path="D:/Program/CooCox/CoIDE/workspace/Lama/dwt_delay.c" title="dwt_delay.c" tooltip="D:/Program/CooCox/CoIDE/workspace/Lama/dwt_delay.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Lama/dwt_delay.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="30" selectionOffset="519" selectionTopPixel="311"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="dwt_delay.h" partName="dwt_delay.h" path="D:/Program/CooCox/CoIDE/workspace/Lama/dwt_delay.h" title="dwt_delay.h" tooltip="D:/Program/CooCox/CoIDE/workspace/Lama/dwt_delay.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Lama/dwt_delay.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="147" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="301" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
 <view id="org.coocox.builder.ui.views.ProjectView" partName="Project">
-<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="16">
+<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="0">
 <expanded>
 <element path="/Lama"/>
-<element path="/Lama/cmsis"/>
-<element path="/Lama/cmsis_boot"/>
-<element path="/Lama/cmsis_boot/startup"/>
 <element path="/Lama/peripheral"/>
 <element path="/Lama/stm_lib"/>
 <element path="/Lama/stm_lib/inc"/>
 </expanded>
 <selection>
-<element path="/Lama/dwt_delay.h"/>
+<element path="/Lama/cmsis_boot"/>
 </selection>
 </viewState>
 </view>
@@ -75,9 +68,6 @@
 <viewState/>
 </view>
 <view id="org.eclipse.debug.ui.VariableView" partName="Variables"/>
-<view id="org.coocox.component.ui.Help" partName="Help">
-<viewState/>
-</view>
 </views>
 <perspectives activePart="org.eclipse.cdt.ui.editor.CEditor" activePerspective="org.coocox.builder.perspective.CoBuilder">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
@@ -111,7 +101,6 @@
 <hide_toolbar_item_id id="org.eclipse.debug.ui.commands.TerminateAndRelaunch"/>
 <view id="org.coocox.component.ui.ComponentView"/>
 <view id="org.coocox.builder.ui.views.ProjectView"/>
-<view id="org.coocox.component.ui.Help"/>
 <view id="org.eclipse.ui.console.ConsoleView"/>
 <fastViewBars/>
 <layout>
@@ -140,15 +129,13 @@
 </info>
 <info part="org.coocox.builder.ui.exampleView" ratio="0.22" ratioLeft="209" ratioRight="741" relationship="2" relative="org.eclipse.ui.internal.ViewStack@312494"/>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@d152fc" ratio="0.71929824" ratioLeft="533" ratioRight="208" relationship="2" relative="org.coocox.builder.ui.exampleView">
-<folder activePageID="org.coocox.component.ui.Help" appearance="2" expanded="2">
-<page content="org.coocox.component.ui.Help" label="Help"/>
+<folder appearance="2" expanded="2">
+<page content="org.coocox.component.ui.Help" label="LabelNotFound"/>
 <page content="org.eclipse.debug.ui.BreakpointView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
 <page content="org.coocox.coassistant.view.CoAssistantView" label="LabelNotFound"/>
 <page content="org.coocox.builder.ui.MoreExampleView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-</presentation>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.4495708" ratioLeft="419" ratioRight="513" relationship="4" relative="org.coocox.builder.ui.exampleView"/>
@@ -258,161 +245,159 @@
 <editors>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Lama/main.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Lama/init.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Lama/init.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Lama/peripheral/usartESP.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Lama/peripheral/usartMH.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Lama/dwt_delay.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Lama/dwt_delay.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Lama/init.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Lama/init.h"/>
 </editors>
-<item historyLabel="init.c" index="1">
-<position/>
-</item>
-<item historyLabel="init.h" index="2">
-<position info="not_deleted" x="1689" y="8"/>
-</item>
-<item historyLabel="usartESP.c" index="3">
-<position info="not_deleted" x="3384" y="0"/>
-</item>
-<item historyLabel="usartMH.c" index="4">
-<position info="not_deleted" x="364" y="0"/>
-</item>
-<item historyLabel="usartESP.c" index="3">
-<position info="not_deleted" x="3384" y="0"/>
-</item>
 <item historyLabel="main.c" index="0">
-<position/>
-</item>
-<item historyLabel="main.c" index="0">
-<position/>
-</item>
-<item historyLabel="main.c" index="0">
-<position/>
-</item>
-<item historyLabel="init.c" index="1">
-<position info="not_deleted" x="6404" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="64" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="1595" y="0"/>
-</item>
-<item historyLabel="init.c" index="1">
-<position info="not_deleted" x="6406" y="25"/>
-</item>
-<item historyLabel="init.h" index="2">
-<position info="not_deleted" x="3614" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="1595" y="0"/>
-</item>
-<item historyLabel="init.c" index="1">
-<position info="not_deleted" x="6434" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="1752" y="0"/>
-</item>
-<item historyLabel="init.c" index="1">
-<position info="not_deleted" x="6434" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position/>
-</item>
-<item historyLabel="init.c" index="1">
-<position info="not_deleted" x="7301" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position/>
-</item>
-<item historyLabel="dwt_delay.c" index="5">
-<position info="not_deleted" x="12" y="9"/>
-</item>
-<item historyLabel="dwt_delay.h" index="6">
-<position info="not_deleted" x="147" y="0"/>
-</item>
-<item historyLabel="dwt_delay.c" index="5">
-<position info="not_deleted" x="237" y="3"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position/>
-</item>
-<item historyLabel="dwt_delay.c" index="5">
-<position info="not_deleted" x="392" y="3"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position/>
-</item>
-<item historyLabel="dwt_delay.h" index="6">
-<position info="not_deleted" x="147" y="0"/>
-</item>
-<item historyLabel="dwt_delay.c" index="5">
-<position info="not_deleted" x="519" y="30"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="1752" y="0"/>
+<position info="not_deleted" x="3260" y="11"/>
 </item>
 <item historyLabel="init.c" index="1">
 <position info="not_deleted" x="7253" y="0"/>
 </item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="1752" y="0"/>
-</item>
-<item historyLabel="usartESP.c" index="3">
-<position info="not_deleted" x="991" y="0"/>
+<item historyLabel="init.h" index="3">
+<position info="not_deleted" x="3205" y="0"/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="1752" y="0"/>
+<position info="not_deleted" x="3260" y="11"/>
+</item>
+<item historyLabel="usartESP.c" index="2">
+<position info="not_deleted" x="2573" y="0"/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="3601" y="0"/>
+<position info="not_deleted" x="1463" y="0"/>
+</item>
+<item historyLabel="usartESP.c" index="2">
+<position info="not_deleted" x="2732" y="0"/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="4470" y="14"/>
+<position info="not_deleted" x="1463" y="0"/>
+</item>
+<item historyLabel="init.h" index="3">
+<position info="not_deleted" x="4225" y="0"/>
+</item>
+<item historyLabel="usartESP.c" index="2">
+<position info="not_deleted" x="2091" y="0"/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="4606" y="3"/>
+<position info="not_deleted" x="1463" y="0"/>
+</item>
+<item historyLabel="init.h" index="3">
+<position info="not_deleted" x="1684" y="0"/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="3552" y="0"/>
+<position info="not_deleted" x="1463" y="0"/>
 </item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="3492" y="0"/>
+<item historyLabel="init.h" index="3">
+<position info="not_deleted" x="1849" y="0"/>
 </item>
-<item historyLabel="usartESP.c" index="3">
-<position info="not_deleted" x="835" y="47"/>
+<item historyLabel="init.h" index="3">
+<position info="not_deleted" x="1682" y="0"/>
 </item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="3637" y="1"/>
+<item historyLabel="init.h" index="3">
+<position info="not_deleted" x="1931" y="16"/>
+</item>
+<item historyLabel="init.h" index="3">
+<position info="not_deleted" x="1628" y="0"/>
+</item>
+<item historyLabel="init.h" index="3">
+<position info="not_deleted" x="1929" y="0"/>
 </item>
 <item historyLabel="init.c" index="1">
 <position info="not_deleted" x="7253" y="0"/>
 </item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="3583" y="15"/>
-</item>
-<item historyLabel="init.c" index="1">
-<position info="not_deleted" x="7253" y="0"/>
-</item>
-<item historyLabel="usartESP.c" index="3">
-<position info="not_deleted" x="835" y="47"/>
-</item>
-<item historyLabel="init.c" index="1">
-<position info="not_deleted" x="7253" y="0"/>
+<item historyLabel="init.h" index="3">
+<position info="not_deleted" x="1929" y="0"/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="3460" y="13"/>
+<position info="not_deleted" x="1860" y="0"/>
 </item>
-<item historyLabel="usartESP.c" index="3">
-<position info="not_deleted" x="1070" y="0"/>
+<item historyLabel="usartESP.c" index="2">
+<position info="not_deleted" x="2091" y="0"/>
+</item>
+<item historyLabel="init.h" index="3">
+<position info="not_deleted" x="1672" y="0"/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="3460" y="13"/>
+<position info="not_deleted" x="1860" y="0"/>
 </item>
-<item historyLabel="init.c" index="1">
-<position info="not_deleted" x="7253" y="0"/>
+<item historyLabel="usartESP.c" index="2">
+<position info="not_deleted" x="2091" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="1860" y="0"/>
+</item>
+<item historyLabel="usartESP.c" index="2">
+<position info="not_deleted" x="1556" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="2340" y="0"/>
+</item>
+<item historyLabel="init.h" index="3">
+<position info="not_deleted" x="1868" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="2340" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="2349" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position/>
+</item>
+<item historyLabel="main.c" index="0">
+<position/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="3871" y="0"/>
+</item>
+<item historyLabel="usartESP.c" index="2">
+<position info="not_deleted" x="1582" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="1734" y="0"/>
+</item>
+<item historyLabel="init.h" index="3">
+<position info="not_deleted" x="1783" y="0"/>
+</item>
+<item historyLabel="init.h" index="3">
+<position info="not_deleted" x="1967" y="0"/>
+</item>
+<item historyLabel="init.h" index="3">
+<position info="not_deleted" x="1867" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="1465" y="0"/>
+</item>
+<item historyLabel="init.h" index="3">
+<position info="not_deleted" x="1945" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="1860" y="0"/>
+</item>
+<item historyLabel="usartESP.c" index="2">
+<position info="not_deleted" x="470" y="0"/>
+</item>
+<item historyLabel="init.h" index="3">
+<position info="not_deleted" x="1929" y="0"/>
+</item>
+<item historyLabel="usartESP.c" index="2">
+<position info="not_deleted" x="301" y="0"/>
+</item>
+<item historyLabel="init.h" index="3">
+<position info="not_deleted" x="1851" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="1860" y="0"/>
+</item>
+<item historyLabel="init.h" index="4">
+<position info="not_deleted" x="4151" y="0"/>
 </item>
 <item active="true" historyLabel="main.c" index="0">
-<position info="not_deleted" x="3460" y="13"/>
+<position/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -421,6 +406,24 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usartESP.c" tooltip="Lama/peripheral/usartESP.c">
+<persistable path="/Lama/peripheral/usartESP.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usartESP.h" tooltip="Lama/peripheral/usartESP.h">
+<persistable path="/Lama/peripheral/usartESP.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usartMH.h" tooltip="Lama/peripheral/usartMH.h">
+<persistable path="/Lama/peripheral/usartMH.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usartMH.c" tooltip="Lama/peripheral/usartMH.c">
+<persistable path="/Lama/peripheral/usartMH.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="i2c.c" tooltip="Lama/peripheral/i2c.c">
+<persistable path="/Lama/peripheral/i2c.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="ds3231.c" tooltip="Lama/peripheral/ds3231.c">
+<persistable path="/Lama/peripheral/ds3231.c"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="dwt_delay.h" tooltip="Lama/dwt_delay.h">
 <persistable path="/Lama/dwt_delay.h"/>
 </file>
@@ -432,24 +435,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x_usart.c" tooltip="Lama/stm_lib/src/stm32f10x_usart.c">
 <persistable path="/Lama/stm_lib/src/stm32f10x_usart.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="i2c.c" tooltip="Lama/peripheral/i2c.c">
-<persistable path="/Lama/peripheral/i2c.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usartESP.h" tooltip="Lama/peripheral/usartESP.h">
-<persistable path="/Lama/peripheral/usartESP.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usartMH.h" tooltip="Lama/peripheral/usartMH.h">
-<persistable path="/Lama/peripheral/usartMH.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usartMH.c" tooltip="Lama/peripheral/usartMH.c">
-<persistable path="/Lama/peripheral/usartMH.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usartESP.c" tooltip="Lama/peripheral/usartESP.c">
-<persistable path="/Lama/peripheral/usartESP.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="ds3231.c" tooltip="Lama/peripheral/ds3231.c">
-<persistable path="/Lama/peripheral/ds3231.c"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="ds3231.h" tooltip="Lama/peripheral/ds3231.h">
 <persistable path="/Lama/peripheral/ds3231.h"/>
