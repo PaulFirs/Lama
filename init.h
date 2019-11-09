@@ -12,6 +12,7 @@
 
 #include <string.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 
 //-------------------------------------------//
@@ -27,7 +28,6 @@
 uint8_t RXi; // Счетчик массива RX_BUF
 uint8_t RXc; // Переменная для хранения пришедшего байта
 uint8_t RX_BUF[RX_BUF_SIZE]; //Принятый масив
-uint8_t TX_BUF[BUF_SIZE];//Принятые команды с параметрами
 
 uint8_t init; 	// Состояние подключения клиента к модулю
 				// 1 - Нет подключенных (Переинициализируется модуль и ожидает клиента)
@@ -43,61 +43,84 @@ uint8_t FLAG_REPLY;	// Флаг для приема ответных команд AT
 //-------------------------------------------//
 
 //Comands
-#define SWITCH_LIGHT		0x00
-#define GET_TIME 			0x01
-#define SET_TIME 			0x02
-#define GET_SET_ALARM 		0x03
-#define GET_SENSORS			0x04
 
 
-/*
- * SubComands for Sensors
- */
-#define DELAY_SENSORS		40
-#define GET_TEMP			0x01
-#define GET_CARB			0x02
+enum list_cmd{
 
+SWITCH_LIGHT,
+GET_TIME,
+SET_TIME,
+GET_ALARM,
+SET_ALARM,
+GET_SENSORS,
 
-
+ZERO = 0xFF
+};
 
 
 
+/* Compatibility */
+#ifndef PACKSTRUCT
+/*Default packed configuration*/
+#ifdef __GNUC__
+#ifdef _WIN32
+#define PACKSTRUCT( decl ) decl __attribute__((__packed__,gcc_struct))
+#else
+#define PACKSTRUCT( decl ) decl __attribute__((__packed__))
+#endif
+#define ALIGNED __attribute__((aligned(0x4)))
+#elif __IAR_SYSTEMS_ICC__
 
-typedef struct{
-	uint8_t null;
-}t_swtch_light;
+#define PACKSTRUCT( decl ) __packed decl
 
-typedef struct{
+#define ALIGNED
+#elif _MSC_VER  /*msvc*/
+
+#define PACKSTRUCT( decl ) __pragma( pack(push, 1) ) decl __pragma( pack(pop) )
+#define ALIGNED
+#else
+#define PACKSTRUCT(a) a PACKED
+#endif
+#endif
+
+
+PACKSTRUCT(struct t_time{
 	uint8_t h_m_s[3];
-}t_time;
+});
 
-
-typedef struct{
-	uint8_t time[3];
+PACKSTRUCT(struct t_alarm{
+	uint8_t h_m_s[3];
 	uint8_t status;
 	uint8_t settings;
-}t_alarm;
+});
 
-typedef struct{
+
+
+PACKSTRUCT(struct t_sensors{
 	uint8_t temp;
-	uint16_t co2;
+	uint8_t co_h;
+	uint8_t co_l;
+});
 
-}t_sensors;
-
-typedef struct{
+PACKSTRUCT( struct t_cmd{
 	uint8_t cmd_type;
 
 	union{
-		t_swtch_light swtch_light;
-		t_time time;
-		t_alarm alarm;
-		t_sensors sensors;
+		struct t_time time;
+		struct t_alarm alarm;
+		struct t_sensors sensors;
 	}arg;
 
-}t_cmd;
+});
 
 
+struct t_time time;
+struct t_alarm alarm;
+struct t_sensors sensors;
 
+struct t_cmd cmd;
+uint8_t size_cmd;
+uint8_t command;
 
 
 
@@ -109,7 +132,9 @@ typedef struct{
 
 //настройки MH-Z19
 uint8_t RXi_MH; // Счетчик принятого массива от MH-Z19
-
+uint8_t co_h;
+uint8_t co_l;
+uint8_t temp;
 
 
 
@@ -159,7 +184,7 @@ uint8_t RXi_MH; // Счетчик принятого массива от MH-Z19
 #define DS3231_T_LSB				0x12	// Адрес регистра последней измеренной температуры младшиий байт
 
 
-
+uint8_t setting_alarm;
 
 
 //------------------------------------------//
@@ -178,29 +203,25 @@ uint8_t error_i2c;
 //------------------------------------------//
 char count[3]; // количество отправляемых символов
 
-uint8_t way_cmd;
-enum do_for_esp{
+uint8_t way_get_mes;
+enum get_mes{
 
 WAIT,
 ID,
-RX_MODE,
+RX_MODE
+};
+
+uint8_t way_prep_mes;
+enum prep_mes{
+
+UPDATA,
 DECODE,
 INVITATION,
 INIT_SENDMES,
 SENDMES,
 INIT_ESP,
-END
-};
-
-
-uint8_t way_closed;
-enum do_closed{
-C,
-L,
-O,
-S,
-E,
-D
+GET_SENSOR,
+WAIT_EQV
 };
 
 

@@ -6,7 +6,7 @@
          <include file="..\..\..\cmsis_boot\system_stm32f10x.h"/>
          <include file="..\..\..\cmsis_boot\stm32f10x_conf.h"/>
       </source>
-      <source file="..\..\..\peripheral\usartMH.c" lastModified="16e0c65c820">
+      <source file="..\..\..\peripheral\usartMH.c" lastModified="16e4c570dae">
          <include file="..\..\..\peripheral\usartMH.h"/>
       </source>
       <source file="..\..\..\peripheral\ds3231.h" lastModified="16de32ac3ef">
@@ -33,7 +33,7 @@
          <include file="..\..\..\stm_lib\inc\stm32f10x_gpio.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
       </source>
-      <source file="..\..\..\init.h" lastModified="16e0cb48190">
+      <source file="..\..\..\init.h" lastModified="16e51724982">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_gpio.h"/>
@@ -52,7 +52,7 @@
          <include file="..\..\..\cmsis\core_cmInstr.h"/>
          <include file="..\..\..\cmsis\core_cmFunc.h"/>
       </source>
-      <source file="..\..\..\init.c" lastModified="16e07176deb">
+      <source file="..\..\..\init.c" lastModified="16e28464225">
          <include file="..\..\..\init.h"/>
       </source>
       <source file="..\..\..\stm_lib\src\misc.c" lastModified="16de3345fde">

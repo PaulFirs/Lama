@@ -28,7 +28,6 @@ void USARTSendCMD(uint8_t *pucBuffer, uint8_t size)
         {
         }
     }
-    clear_Buffer(TX_BUF, BUF_SIZE);//очистка буфера TX
 }
 void USARTSendCHAR(uint8_t pucBuffer)
 {
@@ -56,7 +55,6 @@ void USART1_IRQHandler(void)
 					{
 						clear_Buffer(RX_BUF, RX_BUF_SIZE);
 					}
-
 				}
 				else
 				{
@@ -67,79 +65,37 @@ void USART1_IRQHandler(void)
 		else {//'dslgoh
 			RX_BUF[RXi] = RXc;
 			RXi++;
-			switch(way_cmd){
+			switch(way_get_mes){
+
+				case(WAIT):
+				if(RXc == '+'){
+					way_get_mes = ID;
+					clear_Buffer(RX_BUF, RX_BUF_SIZE);
+				}
+
+				break;
+
 				case(ID):
 					if(RXc == ':'){
 						id = RX_BUF[4];
 						id_rx = atoi (&RX_BUF[6]);
 						clear_Buffer(RX_BUF, RX_BUF_SIZE);
-						way_cmd = RX_MODE;
+						way_get_mes = RX_MODE;
 					}
 					break;
 				case(RX_MODE):
-						if(RXi == id_rx){
-							way_cmd = DECODE;
+					if(RXi == id_rx){
+						way_prep_mes = DECODE;
+					}
+
+					if(RXi > id_rx)
+					{
+						if(RXc == '>'){
+							way_prep_mes = SENDMES;
 						}
-					break;
-
-				case(INVITATION):
-					if(RXc == '>'){
-						way_cmd = SENDMES;
 					}
-					break;
-				case(WAIT):
-					if(RXc == '+'){
-						way_cmd = ID;
-						clear_Buffer(RX_BUF, RX_BUF_SIZE);
-					}
-					/*if(strstr(RX_BUF, "+IPD,")){
-						way_cmd = ID;
-						clear_Buffer(RX_BUF, BUF_SIZE);
-
-					}*/
-					/*if(strstr(RX_BUF, "CLOSED")){
-						clear_Buffer(RX_BUF, RX_BUF_SIZE);
-						init = 1;
-						way_cmd = INIT_ESP;
-					}*/
-					/*switch(way_closed){
-						case(C):
-							if(RXc == 'C')
-								way_closed = L;
-							break;
-						case(L):
-							if(RXc == 'L')
-								way_closed = O;
-							break;
-						case(O):
-							if(RXc == 'O')
-								way_closed = S;
-							break;
-						case(S):
-							if(RXc == 'S')
-								way_closed = E;
-							break;
-						case(E):
-							if(RXc == 'E')
-								way_closed = D;
-							break;
-						case(D):
-							if(RXc == 'D'){
-								clear_Buffer(RX_BUF, RX_BUF_SIZE);
-								init = 1;
-								way_cmd = INIT_ESP;
-								way_closed = C;
-							}
-							break;
-					}*/
 					break;
 			}
-		}
-		if(strstr(RX_BUF, "ERROR")){
-			init = 1;
-			way_cmd = INIT_ESP;
-			clear_Buffer(RX_BUF, RX_BUF_SIZE);
-
 		}
 	}
 }
@@ -153,7 +109,7 @@ void uart_wite_for(char *str) {
 		while (FLAG_REPLY == 0) {
 
 		}
-		result = strstr(RX_BUF, str);
+		result = strstr((const char *)RX_BUF, str);
 	}
 }
 
@@ -169,7 +125,6 @@ void init_ESP(void)
 	USARTSendSTR("AT+CIPSERVER=1,48778\r\n");
 	uart_wite_for("OK");
 
-	//uart_wite_for("0,CONNECT");
-
+	init = 0;
 	clear_Buffer(RX_BUF, RX_BUF_SIZE);
 }
