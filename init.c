@@ -27,6 +27,9 @@ void SetSysClockTo72(void)
 		FLASH_Latency_2 - 48 MHz < SYSCLK в‰¤ 72 MHz
 		FLASH_SetLatency( FLASH_Latency_2);*/
 
+        FLASH_Init();
+        FLASH_ReadSettings();
+
         /* HCLK = SYSCLK */
         RCC_HCLKConfig( RCC_SYSCLK_Div1);
 
@@ -155,7 +158,7 @@ void usartESP_init(void)
     /* Enable the USARTx Interrupt */
     NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn;
     NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
-    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
     NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
     NVIC_Init(&NVIC_InitStructure);
 
@@ -213,7 +216,8 @@ void timer_init(void)
 
     TIM_TimeBaseStructInit(&timer);
     timer.TIM_Prescaler = 7200;//раз в секунду считает таймер 72000000/7200 = 10000 раз в секунду
-    timer.TIM_Period = 1000;//набрав столько сработает прерывание 1000/10000 = 0.1 секунд
+
+    timer.TIM_Period = TIM3_PERIOD;//набрав столько сработает прерывание TIM3_PERIOD/10000
 	TIM_TimeBaseInit(TIM3, &timer);
 	TIM_ITConfig(TIM3, TIM_IT_Update, ENABLE);
 	TIM_Cmd(TIM3, ENABLE);		//Enabling in main func
@@ -222,6 +226,28 @@ void timer_init(void)
     NVIC_InitTypeDef NVIC_InitStructure;
 	    /* Enable the TIM3_IRQn Interrupt */
 	NVIC_InitStructure.NVIC_IRQChannel = TIM3_IRQn;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+	NVIC_Init(&NVIC_InitStructure);
+
+
+
+
+
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4, ENABLE);
+
+	TIM_TimeBaseStructInit(&timer);
+	timer.TIM_Prescaler = 7200;//раз в секунду считает таймер 72000000/7200 = 10000 раз в секунду
+	timer.TIM_Period = 1000;//набрав столько сработает прерывание 1000/10000 = 0.1 секунд
+	TIM_TimeBaseInit(TIM4, &timer);
+	TIM_ITConfig(TIM4, TIM_IT_Update, ENABLE);
+	TIM_Cmd(TIM4, ENABLE);		//Enabling in main func
+
+	/* NVIC Configuration */
+	//NVIC_InitTypeDef NVIC_InitStructure;
+		/* Enable the TIM3_IRQn Interrupt */
+	NVIC_InitStructure.NVIC_IRQChannel = TIM4_IRQn;
 	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
 	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;

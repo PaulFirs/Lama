@@ -9,6 +9,7 @@
 #include "stm32f10x_tim.h"
 #include "stm32f10x_i2c.h"
 #include "misc.h"
+#include "flash.h"
 
 #include <string.h>
 #include <stdlib.h>
@@ -98,8 +99,7 @@ PACKSTRUCT(struct t_alarm{
 
 PACKSTRUCT(struct t_sensors{
 	uint8_t temp;
-	uint8_t co_h;
-	uint8_t co_l;
+	uint8_t co[9];
 });
 
 PACKSTRUCT( struct t_cmd{
@@ -184,7 +184,6 @@ uint8_t temp;
 #define DS3231_T_LSB				0x12	// Адрес регистра последней измеренной температуры младшиий байт
 
 
-uint8_t setting_alarm;
 
 
 //------------------------------------------//
@@ -224,6 +223,8 @@ GET_SENSOR,
 WAIT_EQV
 };
 
+
+#define TIM3_PERIOD 50000 //50000/10000 = 5 секунд
 
 
 //Методы и функции

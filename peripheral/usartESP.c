@@ -2,9 +2,7 @@
 
 inline void clear_Buffer(uint8_t *pucBuffer, uint8_t size) {
 
-    for (uint8_t i=0;i<size;i++){
-    	pucBuffer[i] = '\0';
-    }
+    memset(pucBuffer, '\0', size);
 	RXi = 0;
 	FLAG_REPLY = 0;
 }
@@ -86,6 +84,7 @@ void USART1_IRQHandler(void)
 				case(RX_MODE):
 					if(RXi == id_rx){
 						way_prep_mes = DECODE;
+						TIM4->CNT = 1000;
 					}
 
 					if(RXi > id_rx)

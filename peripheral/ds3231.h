@@ -6,6 +6,7 @@
 #endif
 
 #include "init.h"
+#include "i2c.h"
 
 
 uint8_t DS3231_init(void);

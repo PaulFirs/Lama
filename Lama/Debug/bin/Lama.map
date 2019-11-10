@@ -3,7 +3,9 @@ Archive member included to satisfy reference by file (symbol)
 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-atoi.o)
                               ..\obj\usartESP.o (atoi)
 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-itoa.o)
-                              ..\obj\main.o (itoa)
+                              ..\obj\timer.o (itoa)
+d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-memset.o)
+                              ..\obj\usartESP.o (memset)
 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-strstr.o)
                               ..\obj\main.o (strstr)
 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-strtol.o)
@@ -33,8 +35,8 @@ Allocating common symbols
 Common symbol       size              file
 
 way_prep_mes        0x1               ..\obj\ds3231.o
+settings            0x4               ..\obj\ds3231.o
 size_cmd            0x1               ..\obj\ds3231.o
-setting_alarm       0x1               ..\obj\ds3231.o
 command             0x1               ..\obj\ds3231.o
 temp                0x1               ..\obj\ds3231.o
 alarm               0x5               ..\obj\ds3231.o
@@ -45,17 +47,17 @@ FLAG_REPLY          0x1               ..\obj\ds3231.o
 RXi_MH              0x1               ..\obj\ds3231.o
 co_h                0x1               ..\obj\ds3231.o
 init                0x1               ..\obj\ds3231.o
-Delay_ms            0x4               ..\obj\main.o
+Delay_ms            0x4               ..\obj\timer.o
 time                0x3               ..\obj\ds3231.o
 count               0x3               ..\obj\ds3231.o
 RXc                 0x1               ..\obj\ds3231.o
 id_rx               0x1               ..\obj\ds3231.o
 RXi                 0x1               ..\obj\ds3231.o
 error_i2c           0x1               ..\obj\ds3231.o
-Delay_us            0x4               ..\obj\main.o
+Delay_us            0x4               ..\obj\timer.o
 co_l                0x1               ..\obj\ds3231.o
-sensors             0x3               ..\obj\ds3231.o
-cmd                 0x6               ..\obj\ds3231.o
+sensors             0xa               ..\obj\ds3231.o
+cmd                 0xb               ..\obj\ds3231.o
 
 Discarded input sections
 
@@ -238,6 +240,12 @@ Discarded input sections
  .text          0x00000000        0x0 ..\obj\i2c.o
  .data          0x00000000        0x0 ..\obj\i2c.o
  .bss           0x00000000        0x0 ..\obj\i2c.o
+ .text          0x00000000        0x0 ..\obj\flash.o
+ .data          0x00000000        0x0 ..\obj\flash.o
+ .bss           0x00000000        0x0 ..\obj\flash.o
+ .text          0x00000000        0x0 ..\obj\timer.o
+ .data          0x00000000        0x0 ..\obj\timer.o
+ .bss           0x00000000        0x0 ..\obj\timer.o
  .text          0x00000000        0x0 ..\obj\system_stm32f10x.o
  .bss           0x00000000        0x0 ..\obj\system_stm32f10x.o
  .text.SystemCoreClockUpdate
@@ -282,6 +290,7 @@ Discarded input sections
                 0x00000000       0x1c ..\obj\stm32f10x_gpio.o
  .text          0x00000000        0x0 ..\obj\main.o
  .data          0x00000000        0x0 ..\obj\main.o
+ .bss           0x00000000        0x0 ..\obj\main.o
  .text          0x00000000        0x0 ..\obj\dwt_delay.o
  .data          0x00000000        0x0 ..\obj\dwt_delay.o
  .bss           0x00000000        0x0 ..\obj\dwt_delay.o
@@ -394,6 +403,49 @@ Discarded input sections
  .text          0x00000000        0x0 ..\obj\usartMH.o
  .data          0x00000000        0x0 ..\obj\usartMH.o
  .bss           0x00000000        0x0 ..\obj\usartMH.o
+ .text          0x00000000        0x0 ..\obj\stm32f10x_flash.o
+ .data          0x00000000        0x0 ..\obj\stm32f10x_flash.o
+ .bss           0x00000000        0x0 ..\obj\stm32f10x_flash.o
+ .text.FLASH_HalfCycleAccessCmd
+                0x00000000       0x30 ..\obj\stm32f10x_flash.o
+ .text.FLASH_UnlockBank1
+                0x00000000       0x24 ..\obj\stm32f10x_flash.o
+ .text.FLASH_LockBank1
+                0x00000000       0x1c ..\obj\stm32f10x_flash.o
+ .text.FLASH_EraseAllPages
+                0x00000000       0x5c ..\obj\stm32f10x_flash.o
+ .text.FLASH_EraseAllBank1Pages
+                0x00000000       0x5c ..\obj\stm32f10x_flash.o
+ .text.FLASH_EraseOptionBytes
+                0x00000000       0xd4 ..\obj\stm32f10x_flash.o
+ .text.FLASH_ProgramHalfWord
+                0x00000000       0x5c ..\obj\stm32f10x_flash.o
+ .text.FLASH_ProgramOptionByteData
+                0x00000000       0x78 ..\obj\stm32f10x_flash.o
+ .text.FLASH_EnableWriteProtection
+                0x00000000      0x118 ..\obj\stm32f10x_flash.o
+ .text.FLASH_ReadOutProtection
+                0x00000000       0xd4 ..\obj\stm32f10x_flash.o
+ .text.FLASH_UserOptionByteConfig
+                0x00000000       0x94 ..\obj\stm32f10x_flash.o
+ .text.FLASH_GetUserOptionByte
+                0x00000000       0x18 ..\obj\stm32f10x_flash.o
+ .text.FLASH_GetWriteProtectionOptionByte
+                0x00000000       0x14 ..\obj\stm32f10x_flash.o
+ .text.FLASH_GetReadOutProtectionStatus
+                0x00000000       0x30 ..\obj\stm32f10x_flash.o
+ .text.FLASH_GetPrefetchBufferStatus
+                0x00000000       0x30 ..\obj\stm32f10x_flash.o
+ .text.FLASH_ITConfig
+                0x00000000       0x3c ..\obj\stm32f10x_flash.o
+ .text.FLASH_GetFlagStatus
+                0x00000000       0x50 ..\obj\stm32f10x_flash.o
+ .text.FLASH_ClearFlag
+                0x00000000       0x1c ..\obj\stm32f10x_flash.o
+ .text.FLASH_GetStatus
+                0x00000000       0x54 ..\obj\stm32f10x_flash.o
+ .text.FLASH_WaitForLastBank1Operation
+                0x00000000       0x44 ..\obj\stm32f10x_flash.o
  .text          0x00000000        0x0 ..\obj\misc.o
  .data          0x00000000        0x0 ..\obj\misc.o
  .bss           0x00000000        0x0 ..\obj\misc.o
@@ -464,6 +516,9 @@ Discarded input sections
  .text          0x00000000        0x0 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-itoa.o)
  .data          0x00000000        0x0 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-itoa.o)
  .bss           0x00000000        0x0 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-itoa.o)
+ .text          0x00000000        0x0 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-memset.o)
+ .data          0x00000000        0x0 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-memset.o)
+ .bss           0x00000000        0x0 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-memset.o)
  .text          0x00000000        0x0 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-strstr.o)
  .data          0x00000000        0x0 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-strstr.o)
  .bss           0x00000000        0x0 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-strstr.o)
@@ -536,7 +591,7 @@ Linker script and memory map
 
                 0x20005000                _eram = 0x20005000
 
-.text           0x08000000     0x2dc5
+.text           0x08000000     0x3185
  *(.isr_vector)
  .isr_vector    0x08000000      0x10c ..\obj\startup_stm32f10x_md.o
                 0x08000000                g_pfnVectors
@@ -562,288 +617,324 @@ Linker script and memory map
                 0x0800032c       0x48 ..\obj\ds3231.o
                 0x0800032c                DS3231_init
  .text.DS3231_read_temp
-                0x08000374       0x5a ..\obj\ds3231.o
+                0x08000374       0x58 ..\obj\ds3231.o
                 0x08000374                DS3231_read_temp
  .text.ds3231_del_alarm
-                0x080003ce       0x32 ..\obj\ds3231.o
-                0x080003ce                ds3231_del_alarm
+                0x080003cc       0x32 ..\obj\ds3231.o
+                0x080003cc                ds3231_del_alarm
  .text.ds3231_on_alarm
-                0x08000400       0x4a ..\obj\ds3231.o
-                0x08000400                ds3231_on_alarm
- *fill*         0x0800044a        0x2 
- .text.cicle    0x0800044c       0x50 ..\obj\i2c.o
-                0x0800044c                cicle
+                0x080003fe       0x4a ..\obj\ds3231.o
+                0x080003fe                ds3231_on_alarm
+ .text.cicle    0x08000448       0x50 ..\obj\i2c.o
+                0x08000448                cicle
  .text.I2C_single_write
-                0x0800049c       0xa4 ..\obj\i2c.o
-                0x0800049c                I2C_single_write
+                0x08000498       0xa4 ..\obj\i2c.o
+                0x08000498                I2C_single_write
  .text.I2C_single_read
-                0x08000540       0xd4 ..\obj\i2c.o
-                0x08000540                I2C_single_read
- .text.SystemInit
-                0x08000614       0x68 ..\obj\system_stm32f10x.o
-                0x08000614                SystemInit
- .text.SetSysClock
-                0x0800067c        0xc ..\obj\system_stm32f10x.o
- .text.SetSysClockTo72
-                0x08000688      0x100 ..\obj\system_stm32f10x.o
- .text.Default_Reset_Handler
-                0x08000788       0x60 ..\obj\startup_stm32f10x_md.o
-                0x08000788                Default_Reset_Handler
-                0x08000788                Reset_Handler
- .text.Default_Handler
-                0x080007e8        0x6 ..\obj\startup_stm32f10x_md.o
-                0x080007e8                EXTI2_IRQHandler
-                0x080007e8                DebugMon_Handler
-                0x080007e8                TIM1_CC_IRQHandler
-                0x080007e8                HardFault_Handler
-                0x080007e8                SysTick_Handler
-                0x080007e8                PVD_IRQHandler
-                0x080007e8                PendSV_Handler
-                0x080007e8                NMI_Handler
-                0x080007e8                EXTI3_IRQHandler
-                0x080007e8                EXTI0_IRQHandler
-                0x080007e8                I2C2_EV_IRQHandler
-                0x080007e8                UsageFault_Handler
-                0x080007e8                ADC1_2_IRQHandler
-                0x080007e8                SPI1_IRQHandler
-                0x080007e8                TAMPER_IRQHandler
-                0x080007e8                DMA1_Channel4_IRQHandler
-                0x080007e8                USART3_IRQHandler
-                0x080007e8                RTC_IRQHandler
-                0x080007e8                DMA1_Channel7_IRQHandler
-                0x080007e8                CAN1_RX1_IRQHandler
-                0x080007e8                TIM4_IRQHandler
-                0x080007e8                I2C1_EV_IRQHandler
-                0x080007e8                DMA1_Channel6_IRQHandler
-                0x080007e8                RCC_IRQHandler
-                0x080007e8                TIM1_TRG_COM_IRQHandler
-                0x080007e8                DMA1_Channel1_IRQHandler
-                0x080007e8                EXTI15_10_IRQHandler
-                0x080007e8                EXTI9_5_IRQHandler
-                0x080007e8                SPI2_IRQHandler
-                0x080007e8                MemManage_Handler
-                0x080007e8                SVC_Handler
-                0x080007e8                DMA1_Channel5_IRQHandler
-                0x080007e8                EXTI4_IRQHandler
-                0x080007e8                USB_LP_CAN1_RX0_IRQHandler
-                0x080007e8                USB_HP_CAN1_TX_IRQHandler
-                0x080007e8                DMA1_Channel3_IRQHandler
-                0x080007e8                TIM1_UP_IRQHandler
-                0x080007e8                WWDG_IRQHandler
-                0x080007e8                TIM2_IRQHandler
-                0x080007e8                TIM1_BRK_IRQHandler
-                0x080007e8                RTCAlarm_IRQHandler
-                0x080007e8                USART2_IRQHandler
-                0x080007e8                I2C2_ER_IRQHandler
-                0x080007e8                DMA1_Channel2_IRQHandler
-                0x080007e8                CAN1_SCE_IRQHandler
-                0x080007e8                FLASH_IRQHandler
-                0x080007e8                BusFault_Handler
-                0x080007e8                I2C1_ER_IRQHandler
-                0x080007e8                USBWakeUp_IRQHandler
- .text.GPIO_Init
-                0x080007ee      0x178 ..\obj\stm32f10x_gpio.o
-                0x080007ee                GPIO_Init
- .text.GPIO_ReadInputDataBit
-                0x08000966       0x32 ..\obj\stm32f10x_gpio.o
-                0x08000966                GPIO_ReadInputDataBit
- .text.chan     0x08000998       0x90 ..\obj\main.o
-                0x08000998                chan
- .text.sizeof_cmd
-                0x08000a28       0x6c ..\obj\main.o
-                0x08000a28                sizeof_cmd
+                0x0800053c       0xd4 ..\obj\i2c.o
+                0x0800053c                I2C_single_read
+ .text.FLASH_Init
+                0x08000610       0x14 ..\obj\flash.o
+                0x08000610                FLASH_Init
+ .text.FLASH_ReadSettings
+                0x08000624       0x48 ..\obj\flash.o
+                0x08000624                FLASH_ReadSettings
+ .text.FLASH_WriteSettings
+                0x0800066c       0x58 ..\obj\flash.o
+                0x0800066c                FLASH_WriteSettings
+ .text.TIM4_IRQHandler
+                0x080006c4      0x1b0 ..\obj\timer.o
+                0x080006c4                TIM4_IRQHandler
  .text.TIM3_IRQHandler
-                0x08000a94      0x1d8 ..\obj\main.o
-                0x08000a94                TIM3_IRQHandler
- .text.EXTI1_IRQHandler
-                0x08000c6c       0x30 ..\obj\main.o
-                0x08000c6c                EXTI1_IRQHandler
- .text.main     0x08000c9c      0x2a4 ..\obj\main.o
-                0x08000c9c                main
- .text.DWT_DelayUpdate
-                0x08000f40       0x40 ..\obj\dwt_delay.o
-                0x08000f40                DWT_DelayUpdate
- .text.DWT_Init
-                0x08000f80       0x2c ..\obj\dwt_delay.o
-                0x08000f80                DWT_Init
- .text.DWT_Delay_ms
-                0x08000fac       0x3c ..\obj\dwt_delay.o
-                0x08000fac                DWT_Delay_ms
- .text.DWT_Delay_us
-                0x08000fe8       0x3c ..\obj\dwt_delay.o
-                0x08000fe8                DWT_Delay_us
- .text.NVIC_EnableIRQ
-                0x08001024       0x30 ..\obj\init.o
+                0x08000874      0x1a4 ..\obj\timer.o
+                0x08000874                TIM3_IRQHandler
+ .text.SystemInit
+                0x08000a18       0x68 ..\obj\system_stm32f10x.o
+                0x08000a18                SystemInit
+ .text.SetSysClock
+                0x08000a80        0xc ..\obj\system_stm32f10x.o
  .text.SetSysClockTo72
-                0x08001054       0x70 ..\obj\init.o
-                0x08001054                SetSysClockTo72
+                0x08000a8c      0x100 ..\obj\system_stm32f10x.o
+ .text.Default_Reset_Handler
+                0x08000b8c       0x60 ..\obj\startup_stm32f10x_md.o
+                0x08000b8c                Default_Reset_Handler
+                0x08000b8c                Reset_Handler
+ .text.Default_Handler
+                0x08000bec        0x6 ..\obj\startup_stm32f10x_md.o
+                0x08000bec                EXTI2_IRQHandler
+                0x08000bec                DebugMon_Handler
+                0x08000bec                TIM1_CC_IRQHandler
+                0x08000bec                HardFault_Handler
+                0x08000bec                SysTick_Handler
+                0x08000bec                PVD_IRQHandler
+                0x08000bec                PendSV_Handler
+                0x08000bec                NMI_Handler
+                0x08000bec                EXTI3_IRQHandler
+                0x08000bec                EXTI0_IRQHandler
+                0x08000bec                I2C2_EV_IRQHandler
+                0x08000bec                UsageFault_Handler
+                0x08000bec                ADC1_2_IRQHandler
+                0x08000bec                SPI1_IRQHandler
+                0x08000bec                TAMPER_IRQHandler
+                0x08000bec                DMA1_Channel4_IRQHandler
+                0x08000bec                USART3_IRQHandler
+                0x08000bec                RTC_IRQHandler
+                0x08000bec                DMA1_Channel7_IRQHandler
+                0x08000bec                CAN1_RX1_IRQHandler
+                0x08000bec                I2C1_EV_IRQHandler
+                0x08000bec                DMA1_Channel6_IRQHandler
+                0x08000bec                RCC_IRQHandler
+                0x08000bec                TIM1_TRG_COM_IRQHandler
+                0x08000bec                DMA1_Channel1_IRQHandler
+                0x08000bec                EXTI15_10_IRQHandler
+                0x08000bec                EXTI9_5_IRQHandler
+                0x08000bec                SPI2_IRQHandler
+                0x08000bec                MemManage_Handler
+                0x08000bec                SVC_Handler
+                0x08000bec                DMA1_Channel5_IRQHandler
+                0x08000bec                EXTI4_IRQHandler
+                0x08000bec                USB_LP_CAN1_RX0_IRQHandler
+                0x08000bec                USB_HP_CAN1_TX_IRQHandler
+                0x08000bec                DMA1_Channel3_IRQHandler
+                0x08000bec                TIM1_UP_IRQHandler
+                0x08000bec                WWDG_IRQHandler
+                0x08000bec                TIM2_IRQHandler
+                0x08000bec                TIM1_BRK_IRQHandler
+                0x08000bec                RTCAlarm_IRQHandler
+                0x08000bec                USART2_IRQHandler
+                0x08000bec                I2C2_ER_IRQHandler
+                0x08000bec                DMA1_Channel2_IRQHandler
+                0x08000bec                CAN1_SCE_IRQHandler
+                0x08000bec                FLASH_IRQHandler
+                0x08000bec                BusFault_Handler
+                0x08000bec                I2C1_ER_IRQHandler
+                0x08000bec                USBWakeUp_IRQHandler
+ .text.GPIO_Init
+                0x08000bf2      0x178 ..\obj\stm32f10x_gpio.o
+                0x08000bf2                GPIO_Init
+ .text.GPIO_ReadInputDataBit
+                0x08000d6a       0x32 ..\obj\stm32f10x_gpio.o
+                0x08000d6a                GPIO_ReadInputDataBit
+ .text.chan     0x08000d9c       0x90 ..\obj\main.o
+                0x08000d9c                chan
+ .text.sizeof_cmd
+                0x08000e2c       0x6c ..\obj\main.o
+                0x08000e2c                sizeof_cmd
+ .text.EXTI1_IRQHandler
+                0x08000e98       0x20 ..\obj\main.o
+                0x08000e98                EXTI1_IRQHandler
+ .text.main     0x08000eb8      0x15c ..\obj\main.o
+                0x08000eb8                main
+ .text.DWT_DelayUpdate
+                0x08001014       0x40 ..\obj\dwt_delay.o
+                0x08001014                DWT_DelayUpdate
+ .text.DWT_Init
+                0x08001054       0x2c ..\obj\dwt_delay.o
+                0x08001054                DWT_Init
+ .text.DWT_Delay_ms
+                0x08001080       0x3c ..\obj\dwt_delay.o
+                0x08001080                DWT_Delay_ms
+ .text.DWT_Delay_us
+                0x080010bc       0x3c ..\obj\dwt_delay.o
+                0x080010bc                DWT_Delay_us
+ .text.NVIC_EnableIRQ
+                0x080010f8       0x30 ..\obj\init.o
+ .text.SetSysClockTo72
+                0x08001128       0x78 ..\obj\init.o
+                0x08001128                SetSysClockTo72
  .text.ports_init
-                0x080010c4      0x118 ..\obj\init.o
-                0x080010c4                ports_init
+                0x080011a0      0x118 ..\obj\init.o
+                0x080011a0                ports_init
  .text.usartESP_init
-                0x080011dc       0x70 ..\obj\init.o
-                0x080011dc                usartESP_init
+                0x080012b8       0x70 ..\obj\init.o
+                0x080012b8                usartESP_init
  .text.usartCN_init
-                0x0800124c       0x54 ..\obj\init.o
-                0x0800124c                usartCN_init
+                0x08001328       0x54 ..\obj\init.o
+                0x08001328                usartCN_init
  .text.timer_init
-                0x080012a0       0x64 ..\obj\init.o
-                0x080012a0                timer_init
+                0x0800137c       0xb8 ..\obj\init.o
+                0x0800137c                timer_init
  .text.I2C1_init
-                0x08001304       0x58 ..\obj\init.o
-                0x08001304                I2C1_init
+                0x08001434       0x58 ..\obj\init.o
+                0x08001434                I2C1_init
  .text.RCC_DeInit
-                0x0800135c       0x5c ..\obj\stm32f10x_rcc.o
-                0x0800135c                RCC_DeInit
+                0x0800148c       0x5c ..\obj\stm32f10x_rcc.o
+                0x0800148c                RCC_DeInit
  .text.RCC_HSEConfig
-                0x080013b8       0x5c ..\obj\stm32f10x_rcc.o
-                0x080013b8                RCC_HSEConfig
+                0x080014e8       0x5c ..\obj\stm32f10x_rcc.o
+                0x080014e8                RCC_HSEConfig
  .text.RCC_WaitForHSEStartUp
-                0x08001414       0x50 ..\obj\stm32f10x_rcc.o
-                0x08001414                RCC_WaitForHSEStartUp
+                0x08001544       0x50 ..\obj\stm32f10x_rcc.o
+                0x08001544                RCC_WaitForHSEStartUp
  .text.RCC_PLLConfig
-                0x08001464       0x3c ..\obj\stm32f10x_rcc.o
-                0x08001464                RCC_PLLConfig
+                0x08001594       0x3c ..\obj\stm32f10x_rcc.o
+                0x08001594                RCC_PLLConfig
  .text.RCC_PLLCmd
-                0x080014a0       0x20 ..\obj\stm32f10x_rcc.o
-                0x080014a0                RCC_PLLCmd
+                0x080015d0       0x20 ..\obj\stm32f10x_rcc.o
+                0x080015d0                RCC_PLLCmd
  .text.RCC_SYSCLKConfig
-                0x080014c0       0x38 ..\obj\stm32f10x_rcc.o
-                0x080014c0                RCC_SYSCLKConfig
+                0x080015f0       0x38 ..\obj\stm32f10x_rcc.o
+                0x080015f0                RCC_SYSCLKConfig
  .text.RCC_GetSYSCLKSource
-                0x080014f8       0x1c ..\obj\stm32f10x_rcc.o
-                0x080014f8                RCC_GetSYSCLKSource
+                0x08001628       0x1c ..\obj\stm32f10x_rcc.o
+                0x08001628                RCC_GetSYSCLKSource
  .text.RCC_HCLKConfig
-                0x08001514       0x38 ..\obj\stm32f10x_rcc.o
-                0x08001514                RCC_HCLKConfig
+                0x08001644       0x38 ..\obj\stm32f10x_rcc.o
+                0x08001644                RCC_HCLKConfig
  .text.RCC_PCLK1Config
-                0x0800154c       0x38 ..\obj\stm32f10x_rcc.o
-                0x0800154c                RCC_PCLK1Config
+                0x0800167c       0x38 ..\obj\stm32f10x_rcc.o
+                0x0800167c                RCC_PCLK1Config
  .text.RCC_PCLK2Config
-                0x08001584       0x38 ..\obj\stm32f10x_rcc.o
-                0x08001584                RCC_PCLK2Config
+                0x080016b4       0x38 ..\obj\stm32f10x_rcc.o
+                0x080016b4                RCC_PCLK2Config
  .text.RCC_GetClocksFreq
-                0x080015bc      0x160 ..\obj\stm32f10x_rcc.o
-                0x080015bc                RCC_GetClocksFreq
+                0x080016ec      0x160 ..\obj\stm32f10x_rcc.o
+                0x080016ec                RCC_GetClocksFreq
  .text.RCC_APB2PeriphClockCmd
-                0x0800171c       0x3c ..\obj\stm32f10x_rcc.o
-                0x0800171c                RCC_APB2PeriphClockCmd
+                0x0800184c       0x3c ..\obj\stm32f10x_rcc.o
+                0x0800184c                RCC_APB2PeriphClockCmd
  .text.RCC_APB1PeriphClockCmd
-                0x08001758       0x3c ..\obj\stm32f10x_rcc.o
-                0x08001758                RCC_APB1PeriphClockCmd
+                0x08001888       0x3c ..\obj\stm32f10x_rcc.o
+                0x08001888                RCC_APB1PeriphClockCmd
  .text.RCC_GetFlagStatus
-                0x08001794       0x74 ..\obj\stm32f10x_rcc.o
-                0x08001794                RCC_GetFlagStatus
+                0x080018c4       0x74 ..\obj\stm32f10x_rcc.o
+                0x080018c4                RCC_GetFlagStatus
  .text.USART_Init
-                0x08001808      0x174 ..\obj\stm32f10x_usart.o
-                0x08001808                USART_Init
+                0x08001938      0x174 ..\obj\stm32f10x_usart.o
+                0x08001938                USART_Init
  .text.USART_Cmd
-                0x0800197c       0x3e ..\obj\stm32f10x_usart.o
-                0x0800197c                USART_Cmd
+                0x08001aac       0x3e ..\obj\stm32f10x_usart.o
+                0x08001aac                USART_Cmd
  .text.USART_ITConfig
-                0x080019ba       0x8e ..\obj\stm32f10x_usart.o
-                0x080019ba                USART_ITConfig
+                0x08001aea       0x8e ..\obj\stm32f10x_usart.o
+                0x08001aea                USART_ITConfig
  .text.USART_SendData
-                0x08001a48       0x22 ..\obj\stm32f10x_usart.o
-                0x08001a48                USART_SendData
+                0x08001b78       0x22 ..\obj\stm32f10x_usart.o
+                0x08001b78                USART_SendData
  .text.USART_ReceiveData
-                0x08001a6a       0x1e ..\obj\stm32f10x_usart.o
-                0x08001a6a                USART_ReceiveData
+                0x08001b9a       0x1e ..\obj\stm32f10x_usart.o
+                0x08001b9a                USART_ReceiveData
  .text.USART_GetFlagStatus
-                0x08001a88       0x36 ..\obj\stm32f10x_usart.o
-                0x08001a88                USART_GetFlagStatus
- *fill*         0x08001abe        0x2 
+                0x08001bb8       0x36 ..\obj\stm32f10x_usart.o
+                0x08001bb8                USART_GetFlagStatus
+ *fill*         0x08001bee        0x2 
  .text.USART3SendCMD
-                0x08001ac0       0x50 ..\obj\usartMH.o
-                0x08001ac0                USART3SendCMD
- .text.GetCO2   0x08001b10       0xa8 ..\obj\usartMH.o
-                0x08001b10                GetCO2
+                0x08001bf0       0x50 ..\obj\usartMH.o
+                0x08001bf0                USART3SendCMD
+ .text.GetCO2   0x08001c40       0x74 ..\obj\usartMH.o
+                0x08001c40                GetCO2
+ .text.FLASH_SetLatency
+                0x08001cb4       0x38 ..\obj\stm32f10x_flash.o
+                0x08001cb4                FLASH_SetLatency
+ .text.FLASH_PrefetchBufferCmd
+                0x08001cec       0x30 ..\obj\stm32f10x_flash.o
+                0x08001cec                FLASH_PrefetchBufferCmd
+ .text.FLASH_Unlock
+                0x08001d1c       0x24 ..\obj\stm32f10x_flash.o
+                0x08001d1c                FLASH_Unlock
+ .text.FLASH_Lock
+                0x08001d40       0x1c ..\obj\stm32f10x_flash.o
+                0x08001d40                FLASH_Lock
+ .text.FLASH_ErasePage
+                0x08001d5c       0x64 ..\obj\stm32f10x_flash.o
+                0x08001d5c                FLASH_ErasePage
+ .text.FLASH_ProgramWord
+                0x08001dc0       0x94 ..\obj\stm32f10x_flash.o
+                0x08001dc0                FLASH_ProgramWord
+ .text.FLASH_GetBank1Status
+                0x08001e54       0x54 ..\obj\stm32f10x_flash.o
+                0x08001e54                FLASH_GetBank1Status
+ .text.FLASH_WaitForLastOperation
+                0x08001ea8       0x44 ..\obj\stm32f10x_flash.o
+                0x08001ea8                FLASH_WaitForLastOperation
  .text.NVIC_Init
-                0x08001bb8       0xc4 ..\obj\misc.o
-                0x08001bb8                NVIC_Init
+                0x08001eec       0xc4 ..\obj\misc.o
+                0x08001eec                NVIC_Init
  .text.I2C_Init
-                0x08001c7c      0x184 ..\obj\stm32f10x_i2c.o
-                0x08001c7c                I2C_Init
+                0x08001fb0      0x184 ..\obj\stm32f10x_i2c.o
+                0x08001fb0                I2C_Init
  .text.I2C_StructInit
-                0x08001e00       0x3c ..\obj\stm32f10x_i2c.o
-                0x08001e00                I2C_StructInit
- .text.I2C_Cmd  0x08001e3c       0x3e ..\obj\stm32f10x_i2c.o
-                0x08001e3c                I2C_Cmd
+                0x08002134       0x3c ..\obj\stm32f10x_i2c.o
+                0x08002134                I2C_StructInit
+ .text.I2C_Cmd  0x08002170       0x3e ..\obj\stm32f10x_i2c.o
+                0x08002170                I2C_Cmd
  .text.I2C_GenerateSTART
-                0x08001e7a       0x3e ..\obj\stm32f10x_i2c.o
-                0x08001e7a                I2C_GenerateSTART
+                0x080021ae       0x3e ..\obj\stm32f10x_i2c.o
+                0x080021ae                I2C_GenerateSTART
  .text.I2C_GenerateSTOP
-                0x08001eb8       0x3e ..\obj\stm32f10x_i2c.o
-                0x08001eb8                I2C_GenerateSTOP
+                0x080021ec       0x3e ..\obj\stm32f10x_i2c.o
+                0x080021ec                I2C_GenerateSTOP
  .text.I2C_AcknowledgeConfig
-                0x08001ef6       0x3e ..\obj\stm32f10x_i2c.o
-                0x08001ef6                I2C_AcknowledgeConfig
+                0x0800222a       0x3e ..\obj\stm32f10x_i2c.o
+                0x0800222a                I2C_AcknowledgeConfig
  .text.I2C_SendData
-                0x08001f34       0x1e ..\obj\stm32f10x_i2c.o
-                0x08001f34                I2C_SendData
+                0x08002268       0x1e ..\obj\stm32f10x_i2c.o
+                0x08002268                I2C_SendData
  .text.I2C_ReceiveData
-                0x08001f52       0x1a ..\obj\stm32f10x_i2c.o
-                0x08001f52                I2C_ReceiveData
+                0x08002286       0x1a ..\obj\stm32f10x_i2c.o
+                0x08002286                I2C_ReceiveData
  .text.I2C_Send7bitAddress
-                0x08001f6c       0x3a ..\obj\stm32f10x_i2c.o
-                0x08001f6c                I2C_Send7bitAddress
+                0x080022a0       0x3a ..\obj\stm32f10x_i2c.o
+                0x080022a0                I2C_Send7bitAddress
  .text.I2C_CheckEvent
-                0x08001fa6       0x5e ..\obj\stm32f10x_i2c.o
-                0x08001fa6                I2C_CheckEvent
+                0x080022da       0x5e ..\obj\stm32f10x_i2c.o
+                0x080022da                I2C_CheckEvent
  .text.clear_Buffer
-                0x08002004       0x48 ..\obj\usartESP.o
-                0x08002004                clear_Buffer
+                0x08002338       0x34 ..\obj\usartESP.o
+                0x08002338                clear_Buffer
  .text.USARTSendSTR
-                0x0800204c       0x40 ..\obj\usartESP.o
-                0x0800204c                USARTSendSTR
+                0x0800236c       0x40 ..\obj\usartESP.o
+                0x0800236c                USARTSendSTR
  .text.USARTSendCMD
-                0x0800208c       0x50 ..\obj\usartESP.o
-                0x0800208c                USARTSendCMD
+                0x080023ac       0x50 ..\obj\usartESP.o
+                0x080023ac                USARTSendCMD
  .text.USARTSendCHAR
-                0x080020dc       0x34 ..\obj\usartESP.o
-                0x080020dc                USARTSendCHAR
+                0x080023fc       0x34 ..\obj\usartESP.o
+                0x080023fc                USARTSendCHAR
  .text.USART1_IRQHandler
-                0x08002110      0x15c ..\obj\usartESP.o
-                0x08002110                USART1_IRQHandler
+                0x08002430      0x168 ..\obj\usartESP.o
+                0x08002430                USART1_IRQHandler
  .text.uart_wite_for
-                0x0800226c       0x48 ..\obj\usartESP.o
-                0x0800226c                uart_wite_for
+                0x08002598       0x48 ..\obj\usartESP.o
+                0x08002598                uart_wite_for
  .text.init_ESP
-                0x080022b4       0x68 ..\obj\usartESP.o
-                0x080022b4                init_ESP
- .text.atoi     0x0800231c        0x8 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-atoi.o)
-                0x0800231c                atoi
- .text.__itoa   0x08002324       0x3c d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-itoa.o)
-                0x08002324                __itoa
- .text.itoa     0x08002360        0x4 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-itoa.o)
-                0x08002360                itoa
+                0x080025e0       0x68 ..\obj\usartESP.o
+                0x080025e0                init_ESP
+ .text.atoi     0x08002648        0x8 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-atoi.o)
+                0x08002648                atoi
+ .text.__itoa   0x08002650       0x3c d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-itoa.o)
+                0x08002650                __itoa
+ .text.itoa     0x0800268c        0x4 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-itoa.o)
+                0x0800268c                itoa
+ .text.memset   0x08002690       0x94 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-memset.o)
+                0x08002690                memset
  .text.critical_factorization
-                0x08002364       0xb4 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-strstr.o)
+                0x08002724       0xb4 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-strstr.o)
  .text.two_way_long_needle
-                0x08002418      0x1f8 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-strstr.o)
- .text.strstr   0x08002610      0x1f8 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-strstr.o)
-                0x08002610                strstr
+                0x080027d8      0x1f8 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-strstr.o)
+ .text.strstr   0x080029d0      0x1f8 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-strstr.o)
+                0x080029d0                strstr
  .text._strtol_l.isra.0
-                0x08002808      0x124 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-strtol.o)
- .text.strtol   0x0800292c       0x2c d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-strtol.o)
-                0x0800292c                strtol
- .text.__utoa   0x08002958       0x80 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-utoa.o)
-                0x08002958                __utoa
+                0x08002bc8      0x124 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-strtol.o)
+ .text.strtol   0x08002cec       0x2c d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-strtol.o)
+                0x08002cec                strtol
+ .text.__utoa   0x08002d18       0x80 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-utoa.o)
+                0x08002d18                __utoa
  .text.__locale_ctype_ptr_l
-                0x080029d8        0x8 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-locale.o)
-                0x080029d8                __locale_ctype_ptr_l
+                0x08002d98        0x8 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-locale.o)
+                0x08002d98                __locale_ctype_ptr_l
  .text.__ascii_mbtowc
-                0x080029e0       0x2c d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-mbtowc_r.o)
-                0x080029e0                __ascii_mbtowc
- .text.memchr   0x08002a0c       0x8c d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-memchr-stub.o)
-                0x08002a0c                memchr
- .text.memcmp   0x08002a98       0x64 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-memcmp.o)
-                0x08002a98                memcmp
- .text.strchr   0x08002afc       0xe8 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-strchr.o)
-                0x08002afc                strchr
+                0x08002da0       0x2c d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-mbtowc_r.o)
+                0x08002da0                __ascii_mbtowc
+ .text.memchr   0x08002dcc       0x8c d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-memchr-stub.o)
+                0x08002dcc                memchr
+ .text.memcmp   0x08002e58       0x64 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-memcmp.o)
+                0x08002e58                memcmp
+ .text.strchr   0x08002ebc       0xe8 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-strchr.o)
+                0x08002ebc                strchr
  .text.__ascii_wctomb
-                0x08002be4       0x18 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-wctomb_r.o)
-                0x08002be4                __ascii_wctomb
+                0x08002fa4       0x18 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-wctomb_r.o)
+                0x08002fa4                __ascii_wctomb
  *(.init)
  *(.fini)
  *crtbegin.o(.ctors)
@@ -857,55 +948,57 @@ Linker script and memory map
  *(SORT_BY_NAME(.dtors.*))
  *(.dtors)
  *(.rodata*)
- .rodata        0x08002bfc       0x33 ..\obj\main.o
-                0x08002bfc                getppm
- *fill*         0x08002c2f        0x1 
- .rodata        0x08002c30       0x5b ..\obj\usartESP.o
- *fill*         0x08002c8b        0x1 
+ .rodata        0x08002fbc        0x9 ..\obj\timer.o
+                0x08002fbc                getppm
+ *fill*         0x08002fc5        0x3 
+ .rodata        0x08002fc8       0x27 ..\obj\main.o
+ *fill*         0x08002fef        0x1 
+ .rodata        0x08002ff0       0x5b ..\obj\usartESP.o
+ *fill*         0x0800304b        0x1 
  .rodata.__utoa.str1.4
-                0x08002c8c       0x25 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-utoa.o)
- *fill*         0x08002cb1        0x3 
+                0x0800304c       0x25 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-utoa.o)
+ *fill*         0x08003071        0x3 
  .rodata._setlocale_r.str1.4
-                0x08002cb4        0xa d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-locale.o)
+                0x08003074        0xa d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-locale.o)
                                   0xd (size before relaxing)
- *fill*         0x08002cbe        0x2 
+ *fill*         0x0800307e        0x2 
  .rodata.str1.4
-                0x08002cc0        0x4 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-locale.o)
+                0x08003080        0x4 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-locale.o)
                                   0x2 (size before relaxing)
  .rodata._ctype_
-                0x08002cc4      0x101 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-ctype_.o)
-                0x08002cc4                _ctype_
+                0x08003084      0x101 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-ctype_.o)
+                0x08003084                _ctype_
  *(.eh_fram e*)
 
-.glue_7         0x08002dc8        0x0
- .glue_7        0x08002dc8        0x0 linker stubs
+.glue_7         0x08003188        0x0
+ .glue_7        0x08003188        0x0 linker stubs
 
-.glue_7t        0x08002dc8        0x0
- .glue_7t       0x08002dc8        0x0 linker stubs
+.glue_7t        0x08003188        0x0
+ .glue_7t       0x08003188        0x0 linker stubs
 
-.vfp11_veneer   0x08002dc8        0x0
- .vfp11_veneer  0x08002dc8        0x0 linker stubs
+.vfp11_veneer   0x08003188        0x0
+ .vfp11_veneer  0x08003188        0x0 linker stubs
 
-.v4_bx          0x08002dc8        0x0
- .v4_bx         0x08002dc8        0x0 linker stubs
+.v4_bx          0x08003188        0x0
+ .v4_bx         0x08003188        0x0 linker stubs
 
-.iplt           0x08002dc8        0x0
- .iplt          0x08002dc8        0x0 ..\obj\stm32f10x_tim.o
+.iplt           0x08003188        0x0
+ .iplt          0x08003188        0x0 ..\obj\stm32f10x_tim.o
 
-.rel.dyn        0x08002dc8        0x0
- .rel.iplt      0x08002dc8        0x0 ..\obj\stm32f10x_tim.o
+.rel.dyn        0x08003188        0x0
+ .rel.iplt      0x08003188        0x0 ..\obj\stm32f10x_tim.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x08002dc8                __exidx_start = .
+                0x08003188                __exidx_start = .
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x08002dc8                __exidx_end = .
-                0x08002dc8                __etext = .
-                0x08002dc5                _sidata = __etext
+                0x08003188                __exidx_end = .
+                0x08003188                __etext = .
+                0x08003185                _sidata = __etext
 
-.data           0x20000000      0x5c4 load address 0x08002dc5
+.data           0x20000000      0x5c4 load address 0x08003185
                 0x20000000                __data_start__ = .
                 0x20000000                _sdata = __data_start__
  *(vtable)
@@ -942,22 +1035,21 @@ Linker script and memory map
                 0x200005c4                __data_end__ = .
                 0x200005c4                _edata = __data_end__
 
-.igot.plt       0x200005c4        0x0 load address 0x0800338c
+.igot.plt       0x200005c4        0x0 load address 0x0800374c
  .igot.plt      0x200005c4        0x0 ..\obj\stm32f10x_tim.o
 
-.bss            0x200005c4       0xbc load address 0x0800338c
+.bss            0x200005c4       0xc8 load address 0x0800374c
                 0x200005c4                . = ALIGN (0x4)
                 0x200005c4                __bss_start__ = .
                 0x200005c4                _sbss = __bss_start__
  *(.bss*)
- .bss           0x200005c4        0x4 ..\obj\main.o
  *(COMMON)
- COMMON         0x200005c8       0xae ..\obj\ds3231.o
-                0x200005c8                way_prep_mes
-                0x200005c9                size_cmd
-                0x200005ca                setting_alarm
-                0x200005cb                command
-                0x200005cc                temp
+ COMMON         0x200005c4       0xbf ..\obj\ds3231.o
+                0x200005c4                way_prep_mes
+                0x200005c8                settings
+                0x200005cc                size_cmd
+                0x200005cd                command
+                0x200005ce                temp
                 0x200005d0                alarm
                 0x200005d5                id
                 0x200005d8                RX_BUF
@@ -974,34 +1066,37 @@ Linker script and memory map
                 0x2000066a                error_i2c
                 0x2000066b                co_l
                 0x2000066c                sensors
-                0x20000670                cmd
- *fill*         0x20000676        0x2 
- COMMON         0x20000678        0x8 ..\obj\main.o
-                0x20000678                Delay_ms
-                0x2000067c                Delay_us
-                0x20000680                . = ALIGN (0x4)
-                0x20000680                __bss_end__ = .
-                0x20000680                _ebss = __bss_end__
+                0x20000678                cmd
+ *fill*         0x20000683        0x1 
+ COMMON         0x20000684        0x8 ..\obj\timer.o
+                0x20000684                Delay_ms
+                0x20000688                Delay_us
+                0x2000068c                . = ALIGN (0x4)
+                0x2000068c                __bss_end__ = .
+                0x2000068c                _ebss = __bss_end__
 
-.heap           0x20000680        0x0
-                0x20000680                __end__ = .
-                0x20000680                _end = __end__
-                0x20000680                end = __end__
+.heap           0x2000068c        0x0
+                0x2000068c                __end__ = .
+                0x2000068c                _end = __end__
+                0x2000068c                end = __end__
  *(.heap*)
-                0x20000680                __HeapLimit = .
+                0x2000068c                __HeapLimit = .
 
-.co_stack       0x20000680      0x400 load address 0x08003448
-                0x20000680                . = ALIGN (0x8)
+.co_stack       0x2000068c      0x404 load address 0x08003814
+                0x20000690                . = ALIGN (0x8)
+ *fill*         0x2000068c        0x4 
  *(.co_stack .co_stack.*)
- .co_stack      0x20000680      0x400 ..\obj\startup_stm32f10x_md.o
-                0x20000680                pulStack
+ .co_stack      0x20000690      0x400 ..\obj\startup_stm32f10x_md.o
+                0x20000690                pulStack
                 0x20005000                __StackTop = (ORIGIN (ram) + LENGTH (ram))
-                0x20004c00                __StackLimit = (__StackTop - SIZEOF (.co_stack))
+                0x20004bfc                __StackLimit = (__StackTop - SIZEOF (.co_stack))
                 [!provide]                PROVIDE (__stack = __StackTop)
                 0x00000001                ASSERT ((__StackLimit >= __HeapLimit), region ram  overflowed with stack)
 LOAD ..\obj\stm32f10x_tim.o
 LOAD ..\obj\ds3231.o
 LOAD ..\obj\i2c.o
+LOAD ..\obj\flash.o
+LOAD ..\obj\timer.o
 LOAD ..\obj\system_stm32f10x.o
 LOAD ..\obj\startup_stm32f10x_md.o
 LOAD ..\obj\stm32f10x_gpio.o
@@ -1011,6 +1106,7 @@ LOAD ..\obj\init.o
 LOAD ..\obj\stm32f10x_rcc.o
 LOAD ..\obj\stm32f10x_usart.o
 LOAD ..\obj\usartMH.o
+LOAD ..\obj\stm32f10x_flash.o
 LOAD ..\obj\misc.o
 LOAD ..\obj\stm32f10x_i2c.o
 LOAD ..\obj\usartESP.o
@@ -1021,41 +1117,47 @@ LOAD d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-
 END GROUP
 OUTPUT(Lama.elf elf32-littlearm)
 
-.debug_info     0x00000000     0xad8d
+.debug_info     0x00000000     0xc6f3
  .debug_info    0x00000000     0x1c66 ..\obj\stm32f10x_tim.o
- .debug_info    0x00001c66      0xca2 ..\obj\ds3231.o
- .debug_info    0x00002908      0xd7c ..\obj\i2c.o
- .debug_info    0x00003684      0x4a1 ..\obj\system_stm32f10x.o
- .debug_info    0x00003b25      0x10f ..\obj\startup_stm32f10x_md.o
- .debug_info    0x00003c34      0x6fe ..\obj\stm32f10x_gpio.o
- .debug_info    0x00004332     0x10f9 ..\obj\main.o
- .debug_info    0x0000542b      0x4a0 ..\obj\dwt_delay.o
- .debug_info    0x000058cb     0x16a2 ..\obj\init.o
- .debug_info    0x00006f6d      0x8ae ..\obj\stm32f10x_rcc.o
- .debug_info    0x0000781b      0x9f6 ..\obj\stm32f10x_usart.o
- .debug_info    0x00008211      0xd16 ..\obj\usartMH.o
- .debug_info    0x00008f27      0x547 ..\obj\misc.o
- .debug_info    0x0000946e      0xb13 ..\obj\stm32f10x_i2c.o
- .debug_info    0x00009f81      0xe0c ..\obj\usartESP.o
+ .debug_info    0x00001c66      0xc53 ..\obj\ds3231.o
+ .debug_info    0x000028b9      0xdc0 ..\obj\i2c.o
+ .debug_info    0x00003679      0x1d9 ..\obj\flash.o
+ .debug_info    0x00003852     0x1001 ..\obj\timer.o
+ .debug_info    0x00004853      0x4a1 ..\obj\system_stm32f10x.o
+ .debug_info    0x00004cf4      0x10f ..\obj\startup_stm32f10x_md.o
+ .debug_info    0x00004e03      0x6fe ..\obj\stm32f10x_gpio.o
+ .debug_info    0x00005501      0xe15 ..\obj\main.o
+ .debug_info    0x00006316      0x4a0 ..\obj\dwt_delay.o
+ .debug_info    0x000067b6     0x16e8 ..\obj\init.o
+ .debug_info    0x00007e9e      0x8ae ..\obj\stm32f10x_rcc.o
+ .debug_info    0x0000874c      0x9f6 ..\obj\stm32f10x_usart.o
+ .debug_info    0x00009142      0xd3c ..\obj\usartMH.o
+ .debug_info    0x00009e7e      0x7c4 ..\obj\stm32f10x_flash.o
+ .debug_info    0x0000a642      0x547 ..\obj\misc.o
+ .debug_info    0x0000ab89      0xb13 ..\obj\stm32f10x_i2c.o
+ .debug_info    0x0000b69c     0x1057 ..\obj\usartESP.o
 
-.debug_abbrev   0x00000000     0x1c3d
+.debug_abbrev   0x00000000     0x210a
  .debug_abbrev  0x00000000      0x1c5 ..\obj\stm32f10x_tim.o
- .debug_abbrev  0x000001c5      0x258 ..\obj\ds3231.o
- .debug_abbrev  0x0000041d      0x233 ..\obj\i2c.o
- .debug_abbrev  0x00000650      0x170 ..\obj\system_stm32f10x.o
- .debug_abbrev  0x000007c0       0xb8 ..\obj\startup_stm32f10x_md.o
- .debug_abbrev  0x00000878      0x1e1 ..\obj\stm32f10x_gpio.o
- .debug_abbrev  0x00000a59      0x2c0 ..\obj\main.o
- .debug_abbrev  0x00000d19      0x160 ..\obj\dwt_delay.o
- .debug_abbrev  0x00000e79      0x28a ..\obj\init.o
- .debug_abbrev  0x00001103      0x1d1 ..\obj\stm32f10x_rcc.o
- .debug_abbrev  0x000012d4      0x191 ..\obj\stm32f10x_usart.o
- .debug_abbrev  0x00001465      0x238 ..\obj\usartMH.o
- .debug_abbrev  0x0000169d      0x174 ..\obj\misc.o
- .debug_abbrev  0x00001811      0x193 ..\obj\stm32f10x_i2c.o
- .debug_abbrev  0x000019a4      0x299 ..\obj\usartESP.o
+ .debug_abbrev  0x000001c5      0x226 ..\obj\ds3231.o
+ .debug_abbrev  0x000003eb      0x233 ..\obj\i2c.o
+ .debug_abbrev  0x0000061e      0x118 ..\obj\flash.o
+ .debug_abbrev  0x00000736      0x252 ..\obj\timer.o
+ .debug_abbrev  0x00000988      0x170 ..\obj\system_stm32f10x.o
+ .debug_abbrev  0x00000af8       0xb8 ..\obj\startup_stm32f10x_md.o
+ .debug_abbrev  0x00000bb0      0x1e1 ..\obj\stm32f10x_gpio.o
+ .debug_abbrev  0x00000d91      0x288 ..\obj\main.o
+ .debug_abbrev  0x00001019      0x160 ..\obj\dwt_delay.o
+ .debug_abbrev  0x00001179      0x2b3 ..\obj\init.o
+ .debug_abbrev  0x0000142c      0x1d1 ..\obj\stm32f10x_rcc.o
+ .debug_abbrev  0x000015fd      0x191 ..\obj\stm32f10x_usart.o
+ .debug_abbrev  0x0000178e      0x238 ..\obj\usartMH.o
+ .debug_abbrev  0x000019c6      0x1a4 ..\obj\stm32f10x_flash.o
+ .debug_abbrev  0x00001b6a      0x174 ..\obj\misc.o
+ .debug_abbrev  0x00001cde      0x193 ..\obj\stm32f10x_i2c.o
+ .debug_abbrev  0x00001e71      0x299 ..\obj\usartESP.o
 
-.debug_aranges  0x00000000      0x958
+.debug_aranges  0x00000000      0xaa0
  .debug_aranges
                 0x00000000      0x2f0 ..\obj\stm32f10x_tim.o
  .debug_aranges
@@ -1063,101 +1165,121 @@ OUTPUT(Lama.elf elf32-littlearm)
  .debug_aranges
                 0x00000328       0x30 ..\obj\i2c.o
  .debug_aranges
-                0x00000358       0x38 ..\obj\system_stm32f10x.o
+                0x00000358       0x30 ..\obj\flash.o
  .debug_aranges
-                0x00000390       0x28 ..\obj\startup_stm32f10x_md.o
+                0x00000388       0x28 ..\obj\timer.o
  .debug_aranges
-                0x000003b8       0xa8 ..\obj\stm32f10x_gpio.o
+                0x000003b0       0x38 ..\obj\system_stm32f10x.o
  .debug_aranges
-                0x00000460       0x40 ..\obj\main.o
+                0x000003e8       0x28 ..\obj\startup_stm32f10x_md.o
  .debug_aranges
-                0x000004a0       0x78 ..\obj\dwt_delay.o
+                0x00000410       0xa8 ..\obj\stm32f10x_gpio.o
  .debug_aranges
-                0x00000518       0x50 ..\obj\init.o
+                0x000004b8       0x38 ..\obj\main.o
  .debug_aranges
-                0x00000568      0x118 ..\obj\stm32f10x_rcc.o
+                0x000004f0       0x78 ..\obj\dwt_delay.o
  .debug_aranges
-                0x00000680      0x100 ..\obj\stm32f10x_usart.o
+                0x00000568       0x50 ..\obj\init.o
  .debug_aranges
-                0x00000780       0x28 ..\obj\usartMH.o
+                0x000005b8      0x118 ..\obj\stm32f10x_rcc.o
  .debug_aranges
-                0x000007a8       0x40 ..\obj\misc.o
+                0x000006d0      0x100 ..\obj\stm32f10x_usart.o
  .debug_aranges
-                0x000007e8      0x120 ..\obj\stm32f10x_i2c.o
+                0x000007d0       0x28 ..\obj\usartMH.o
  .debug_aranges
-                0x00000908       0x50 ..\obj\usartESP.o
+                0x000007f8       0xf8 ..\obj\stm32f10x_flash.o
+ .debug_aranges
+                0x000008f0       0x40 ..\obj\misc.o
+ .debug_aranges
+                0x00000930      0x120 ..\obj\stm32f10x_i2c.o
+ .debug_aranges
+                0x00000a50       0x50 ..\obj\usartESP.o
 
-.debug_ranges   0x00000000      0x868
+.debug_ranges   0x00000000      0x980
  .debug_ranges  0x00000000      0x2e0 ..\obj\stm32f10x_tim.o
  .debug_ranges  0x000002e0       0x28 ..\obj\ds3231.o
  .debug_ranges  0x00000308       0x20 ..\obj\i2c.o
- .debug_ranges  0x00000328       0x28 ..\obj\system_stm32f10x.o
- .debug_ranges  0x00000350       0x18 ..\obj\startup_stm32f10x_md.o
- .debug_ranges  0x00000368       0x98 ..\obj\stm32f10x_gpio.o
- .debug_ranges  0x00000400       0x30 ..\obj\main.o
- .debug_ranges  0x00000430       0x68 ..\obj\dwt_delay.o
- .debug_ranges  0x00000498       0x40 ..\obj\init.o
- .debug_ranges  0x000004d8      0x108 ..\obj\stm32f10x_rcc.o
- .debug_ranges  0x000005e0       0xf0 ..\obj\stm32f10x_usart.o
- .debug_ranges  0x000006d0       0x18 ..\obj\usartMH.o
- .debug_ranges  0x000006e8       0x30 ..\obj\misc.o
- .debug_ranges  0x00000718      0x110 ..\obj\stm32f10x_i2c.o
- .debug_ranges  0x00000828       0x40 ..\obj\usartESP.o
+ .debug_ranges  0x00000328       0x20 ..\obj\flash.o
+ .debug_ranges  0x00000348       0x18 ..\obj\timer.o
+ .debug_ranges  0x00000360       0x28 ..\obj\system_stm32f10x.o
+ .debug_ranges  0x00000388       0x18 ..\obj\startup_stm32f10x_md.o
+ .debug_ranges  0x000003a0       0x98 ..\obj\stm32f10x_gpio.o
+ .debug_ranges  0x00000438       0x28 ..\obj\main.o
+ .debug_ranges  0x00000460       0x68 ..\obj\dwt_delay.o
+ .debug_ranges  0x000004c8       0x40 ..\obj\init.o
+ .debug_ranges  0x00000508      0x108 ..\obj\stm32f10x_rcc.o
+ .debug_ranges  0x00000610       0xf0 ..\obj\stm32f10x_usart.o
+ .debug_ranges  0x00000700       0x18 ..\obj\usartMH.o
+ .debug_ranges  0x00000718       0xe8 ..\obj\stm32f10x_flash.o
+ .debug_ranges  0x00000800       0x30 ..\obj\misc.o
+ .debug_ranges  0x00000830      0x110 ..\obj\stm32f10x_i2c.o
+ .debug_ranges  0x00000940       0x40 ..\obj\usartESP.o
 
-.debug_line     0x00000000     0x3a8d
+.debug_line     0x00000000     0x4505
  .debug_line    0x00000000      0xb66 ..\obj\stm32f10x_tim.o
- .debug_line    0x00000b66      0x300 ..\obj\ds3231.o
- .debug_line    0x00000e66      0x314 ..\obj\i2c.o
- .debug_line    0x0000117a      0x232 ..\obj\system_stm32f10x.o
- .debug_line    0x000013ac       0xa4 ..\obj\startup_stm32f10x_md.o
- .debug_line    0x00001450      0x3e6 ..\obj\stm32f10x_gpio.o
- .debug_line    0x00001836      0x3f8 ..\obj\main.o
- .debug_line    0x00001c2e      0x28e ..\obj\dwt_delay.o
- .debug_line    0x00001ebc      0x407 ..\obj\init.o
- .debug_line    0x000022c3      0x4e1 ..\obj\stm32f10x_rcc.o
- .debug_line    0x000027a4      0x4c8 ..\obj\stm32f10x_usart.o
- .debug_line    0x00002c6c      0x309 ..\obj\usartMH.o
- .debug_line    0x00002f75      0x25b ..\obj\misc.o
- .debug_line    0x000031d0      0x4fb ..\obj\stm32f10x_i2c.o
- .debug_line    0x000036cb      0x3c2 ..\obj\usartESP.o
+ .debug_line    0x00000b66      0x30b ..\obj\ds3231.o
+ .debug_line    0x00000e71      0x31f ..\obj\i2c.o
+ .debug_line    0x00001190      0x216 ..\obj\flash.o
+ .debug_line    0x000013a6      0x392 ..\obj\timer.o
+ .debug_line    0x00001738      0x232 ..\obj\system_stm32f10x.o
+ .debug_line    0x0000196a       0xa4 ..\obj\startup_stm32f10x_md.o
+ .debug_line    0x00001a0e      0x3e6 ..\obj\stm32f10x_gpio.o
+ .debug_line    0x00001df4      0x381 ..\obj\main.o
+ .debug_line    0x00002175      0x28e ..\obj\dwt_delay.o
+ .debug_line    0x00002403      0x452 ..\obj\init.o
+ .debug_line    0x00002855      0x4e1 ..\obj\stm32f10x_rcc.o
+ .debug_line    0x00002d36      0x4c8 ..\obj\stm32f10x_usart.o
+ .debug_line    0x000031fe      0x312 ..\obj\usartMH.o
+ .debug_line    0x00003510      0x4e2 ..\obj\stm32f10x_flash.o
+ .debug_line    0x000039f2      0x25b ..\obj\misc.o
+ .debug_line    0x00003c4d      0x4fb ..\obj\stm32f10x_i2c.o
+ .debug_line    0x00004148      0x3bd ..\obj\usartESP.o
 
-.debug_str      0x00000000     0x2d57
+.debug_str      0x00000000     0x3224
  .debug_str     0x00000000      0xd61 ..\obj\stm32f10x_tim.o
                                 0xe24 (size before relaxing)
- .debug_str     0x00000d61      0x501 ..\obj\ds3231.o
-                                0x6ed (size before relaxing)
- .debug_str     0x00001262       0x79 ..\obj\i2c.o
-                                0x76a (size before relaxing)
- .debug_str     0x000012db      0x164 ..\obj\system_stm32f10x.o
+ .debug_str     0x00000d61      0x4dd ..\obj\ds3231.o
+                                0x6c9 (size before relaxing)
+ .debug_str     0x0000123e       0x95 ..\obj\i2c.o
+                                0x767 (size before relaxing)
+ .debug_str     0x000012d3       0x82 ..\obj\flash.o
+                                0x23b (size before relaxing)
+ .debug_str     0x00001355      0x108 ..\obj\timer.o
+                                0x8a7 (size before relaxing)
+ .debug_str     0x0000145d      0x164 ..\obj\system_stm32f10x.o
                                 0x326 (size before relaxing)
- .debug_str     0x0000143f       0xc4 ..\obj\startup_stm32f10x_md.o
+ .debug_str     0x000015c1       0xc4 ..\obj\startup_stm32f10x_md.o
                                 0x195 (size before relaxing)
- .debug_str     0x00001503      0x380 ..\obj\stm32f10x_gpio.o
+ .debug_str     0x00001685      0x369 ..\obj\stm32f10x_gpio.o
                                 0x560 (size before relaxing)
- .debug_str     0x00001883      0x12b ..\obj\main.o
-                                0x8f1 (size before relaxing)
- .debug_str     0x000019ae      0x19d ..\obj\dwt_delay.o
+ .debug_str     0x000019ee       0x7e ..\obj\main.o
+                                0x7b4 (size before relaxing)
+ .debug_str     0x00001a6c      0x19d ..\obj\dwt_delay.o
                                 0x35d (size before relaxing)
- .debug_str     0x00001b4b      0x53e ..\obj\init.o
-                                0xeda (size before relaxing)
- .debug_str     0x00002089      0x3d0 ..\obj\stm32f10x_rcc.o
+ .debug_str     0x00001c09      0x544 ..\obj\init.o
+                                0xed7 (size before relaxing)
+ .debug_str     0x0000214d      0x3d0 ..\obj\stm32f10x_rcc.o
                                 0x661 (size before relaxing)
- .debug_str     0x00002459      0x3ab ..\obj\stm32f10x_usart.o
+ .debug_str     0x0000251d      0x3ab ..\obj\stm32f10x_usart.o
                                 0x6d7 (size before relaxing)
- .debug_str     0x00002804       0x5b ..\obj\usartMH.o
-                                0x721 (size before relaxing)
- .debug_str     0x0000285f      0x125 ..\obj\misc.o
+ .debug_str     0x000028c8       0x5b ..\obj\usartMH.o
+                                0x71e (size before relaxing)
+ .debug_str     0x00002923      0x409 ..\obj\stm32f10x_flash.o
+                                0x62f (size before relaxing)
+ .debug_str     0x00002d2c      0x125 ..\obj\misc.o
                                 0x405 (size before relaxing)
- .debug_str     0x00002984      0x338 ..\obj\stm32f10x_i2c.o
+ .debug_str     0x00002e51      0x338 ..\obj\stm32f10x_i2c.o
                                 0x6ad (size before relaxing)
- .debug_str     0x00002cbc       0x9b ..\obj\usartESP.o
-                                0x7db (size before relaxing)
+ .debug_str     0x00003189       0x9b ..\obj\usartESP.o
+                                0x8a9 (size before relaxing)
 
 .comment        0x00000000       0x7f
  .comment       0x00000000       0x7f ..\obj\stm32f10x_tim.o
                                  0x80 (size before relaxing)
  .comment       0x0000007f       0x80 ..\obj\ds3231.o
  .comment       0x0000007f       0x80 ..\obj\i2c.o
+ .comment       0x0000007f       0x80 ..\obj\flash.o
+ .comment       0x0000007f       0x80 ..\obj\timer.o
  .comment       0x0000007f       0x80 ..\obj\system_stm32f10x.o
  .comment       0x0000007f       0x80 ..\obj\startup_stm32f10x_md.o
  .comment       0x0000007f       0x80 ..\obj\stm32f10x_gpio.o
@@ -1167,6 +1289,7 @@ OUTPUT(Lama.elf elf32-littlearm)
  .comment       0x0000007f       0x80 ..\obj\stm32f10x_rcc.o
  .comment       0x0000007f       0x80 ..\obj\stm32f10x_usart.o
  .comment       0x0000007f       0x80 ..\obj\usartMH.o
+ .comment       0x0000007f       0x80 ..\obj\stm32f10x_flash.o
  .comment       0x0000007f       0x80 ..\obj\misc.o
  .comment       0x0000007f       0x80 ..\obj\stm32f10x_i2c.o
  .comment       0x0000007f       0x80 ..\obj\usartESP.o
@@ -1180,80 +1303,92 @@ OUTPUT(Lama.elf elf32-littlearm)
  .ARM.attributes
                 0x00000066       0x33 ..\obj\i2c.o
  .ARM.attributes
-                0x00000099       0x33 ..\obj\system_stm32f10x.o
+                0x00000099       0x33 ..\obj\flash.o
  .ARM.attributes
-                0x000000cc       0x33 ..\obj\startup_stm32f10x_md.o
+                0x000000cc       0x33 ..\obj\timer.o
  .ARM.attributes
-                0x000000ff       0x33 ..\obj\stm32f10x_gpio.o
+                0x000000ff       0x33 ..\obj\system_stm32f10x.o
  .ARM.attributes
-                0x00000132       0x33 ..\obj\main.o
+                0x00000132       0x33 ..\obj\startup_stm32f10x_md.o
  .ARM.attributes
-                0x00000165       0x33 ..\obj\dwt_delay.o
+                0x00000165       0x33 ..\obj\stm32f10x_gpio.o
  .ARM.attributes
-                0x00000198       0x33 ..\obj\init.o
+                0x00000198       0x33 ..\obj\main.o
  .ARM.attributes
-                0x000001cb       0x33 ..\obj\stm32f10x_rcc.o
+                0x000001cb       0x33 ..\obj\dwt_delay.o
  .ARM.attributes
-                0x000001fe       0x33 ..\obj\stm32f10x_usart.o
+                0x000001fe       0x33 ..\obj\init.o
  .ARM.attributes
-                0x00000231       0x33 ..\obj\usartMH.o
+                0x00000231       0x33 ..\obj\stm32f10x_rcc.o
  .ARM.attributes
-                0x00000264       0x33 ..\obj\misc.o
+                0x00000264       0x33 ..\obj\stm32f10x_usart.o
  .ARM.attributes
-                0x00000297       0x33 ..\obj\stm32f10x_i2c.o
+                0x00000297       0x33 ..\obj\usartMH.o
  .ARM.attributes
-                0x000002ca       0x33 ..\obj\usartESP.o
+                0x000002ca       0x33 ..\obj\stm32f10x_flash.o
  .ARM.attributes
-                0x000002fd       0x2d d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-atoi.o)
+                0x000002fd       0x33 ..\obj\misc.o
  .ARM.attributes
-                0x0000032a       0x2d d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-itoa.o)
+                0x00000330       0x33 ..\obj\stm32f10x_i2c.o
  .ARM.attributes
-                0x00000357       0x2d d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-strstr.o)
+                0x00000363       0x33 ..\obj\usartESP.o
  .ARM.attributes
-                0x00000384       0x2d d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-strtol.o)
+                0x00000396       0x2d d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-atoi.o)
  .ARM.attributes
-                0x000003b1       0x2d d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-utoa.o)
+                0x000003c3       0x2d d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-itoa.o)
  .ARM.attributes
-                0x000003de       0x2d d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-impure.o)
+                0x000003f0       0x2d d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-memset.o)
  .ARM.attributes
-                0x0000040b       0x2d d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-locale.o)
+                0x0000041d       0x2d d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-strstr.o)
  .ARM.attributes
-                0x00000438       0x2d d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-mbtowc_r.o)
+                0x0000044a       0x2d d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-strtol.o)
  .ARM.attributes
-                0x00000465       0x2d d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-memchr-stub.o)
+                0x00000477       0x2d d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-utoa.o)
  .ARM.attributes
-                0x00000492       0x2d d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-memcmp.o)
+                0x000004a4       0x2d d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-impure.o)
  .ARM.attributes
-                0x000004bf       0x2d d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-strchr.o)
+                0x000004d1       0x2d d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-locale.o)
  .ARM.attributes
-                0x000004ec       0x2d d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-wctomb_r.o)
+                0x000004fe       0x2d d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-mbtowc_r.o)
  .ARM.attributes
-                0x00000519       0x2d d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-ctype_.o)
+                0x0000052b       0x2d d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-memchr-stub.o)
+ .ARM.attributes
+                0x00000558       0x2d d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-memcmp.o)
+ .ARM.attributes
+                0x00000585       0x2d d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-strchr.o)
+ .ARM.attributes
+                0x000005b2       0x2d d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-wctomb_r.o)
+ .ARM.attributes
+                0x000005df       0x2d d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-ctype_.o)
 
-.debug_frame    0x00000000     0x2b00
+.debug_frame    0x00000000     0x2ff4
  .debug_frame   0x00000000      0xe2c ..\obj\stm32f10x_tim.o
  .debug_frame   0x00000e2c       0xa0 ..\obj\ds3231.o
  .debug_frame   0x00000ecc       0x7c ..\obj\i2c.o
- .debug_frame   0x00000f48       0x98 ..\obj\system_stm32f10x.o
- .debug_frame   0x00000fe0       0x4c ..\obj\startup_stm32f10x_md.o
- .debug_frame   0x0000102c      0x2d0 ..\obj\stm32f10x_gpio.o
- .debug_frame   0x000012fc       0xbc ..\obj\main.o
- .debug_frame   0x000013b8      0x1d4 ..\obj\dwt_delay.o
- .debug_frame   0x0000158c      0x110 ..\obj\init.o
- .debug_frame   0x0000169c      0x4f4 ..\obj\stm32f10x_rcc.o
- .debug_frame   0x00001b90      0x490 ..\obj\stm32f10x_usart.o
- .debug_frame   0x00002020       0x58 ..\obj\usartMH.o
- .debug_frame   0x00002078       0xd8 ..\obj\misc.o
- .debug_frame   0x00002150      0x530 ..\obj\stm32f10x_i2c.o
- .debug_frame   0x00002680      0x100 ..\obj\usartESP.o
- .debug_frame   0x00002780       0x30 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-atoi.o)
- .debug_frame   0x000027b0       0x3c d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-itoa.o)
- .debug_frame   0x000027ec       0x9c d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-strstr.o)
- .debug_frame   0x00002888       0x9c d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-strtol.o)
- .debug_frame   0x00002924       0x4c d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-utoa.o)
- .debug_frame   0x00002970       0x6c d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-locale.o)
- .debug_frame   0x000029dc       0x4c d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-mbtowc_r.o)
- .debug_frame   0x00002a28       0x34 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-memchr-stub.o)
- .debug_frame   0x00002a5c       0x38 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-memcmp.o)
- .debug_frame   0x00002a94       0x30 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-strchr.o)
- .debug_frame   0x00002ac4       0x3c d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-wctomb_r.o)
+ .debug_frame   0x00000f48       0x78 ..\obj\flash.o
+ .debug_frame   0x00000fc0       0x60 ..\obj\timer.o
+ .debug_frame   0x00001020       0x98 ..\obj\system_stm32f10x.o
+ .debug_frame   0x000010b8       0x4c ..\obj\startup_stm32f10x_md.o
+ .debug_frame   0x00001104      0x2d0 ..\obj\stm32f10x_gpio.o
+ .debug_frame   0x000013d4       0x94 ..\obj\main.o
+ .debug_frame   0x00001468      0x1d4 ..\obj\dwt_delay.o
+ .debug_frame   0x0000163c      0x110 ..\obj\init.o
+ .debug_frame   0x0000174c      0x4f4 ..\obj\stm32f10x_rcc.o
+ .debug_frame   0x00001c40      0x490 ..\obj\stm32f10x_usart.o
+ .debug_frame   0x000020d0       0x58 ..\obj\usartMH.o
+ .debug_frame   0x00002128      0x410 ..\obj\stm32f10x_flash.o
+ .debug_frame   0x00002538       0xd8 ..\obj\misc.o
+ .debug_frame   0x00002610      0x530 ..\obj\stm32f10x_i2c.o
+ .debug_frame   0x00002b40       0xfc ..\obj\usartESP.o
+ .debug_frame   0x00002c3c       0x30 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-atoi.o)
+ .debug_frame   0x00002c6c       0x3c d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-itoa.o)
+ .debug_frame   0x00002ca8       0x38 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-memset.o)
+ .debug_frame   0x00002ce0       0x9c d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-strstr.o)
+ .debug_frame   0x00002d7c       0x9c d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-strtol.o)
+ .debug_frame   0x00002e18       0x4c d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-utoa.o)
+ .debug_frame   0x00002e64       0x6c d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-locale.o)
+ .debug_frame   0x00002ed0       0x4c d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-mbtowc_r.o)
+ .debug_frame   0x00002f1c       0x34 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-memchr-stub.o)
+ .debug_frame   0x00002f50       0x38 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-memcmp.o)
+ .debug_frame   0x00002f88       0x30 d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-strchr.o)
+ .debug_frame   0x00002fb8       0x3c d:/program/gnu tools arm embedded/7 2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a(lib_a-wctomb_r.o)

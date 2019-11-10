@@ -14,23 +14,24 @@
 </presentation>
 </folder>
 </info>
-<info part="DefaultEditorWorkbook" ratio="0.5" ratioLeft="850" ratioRight="850" relationship="2" relative="org.eclipse.ui.internal.EditorStack@1279a18">
+<info part="DefaultEditorWorkbook" ratio="0.46258104" ratioLeft="785" ratioRight="912" relationship="2" relative="org.eclipse.ui.internal.EditorStack@1279a18">
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
 <part id="2"/>
+<part id="3"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
 <editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="D:/Program/CooCox/CoIDE/workspace/Lama/main.c" title="main.c" tooltip="D:/Program/CooCox/CoIDE/workspace/Lama/main.c" workbook="org.eclipse.ui.internal.EditorStack@1279a18">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Lama/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="565" selectionTopPixel="960"/>
+<editorState selectionHorizontalPixel="143" selectionLength="0" selectionOffset="4515" selectionTopPixel="3302"/>
 </editor>
 <editor focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="usartESP.c" partName="usartESP.c" path="D:/Program/CooCox/CoIDE/workspace/Lama/peripheral/usartESP.c" title="usartESP.c" tooltip="D:/Program/CooCox/CoIDE/workspace/Lama/peripheral/usartESP.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Lama/peripheral/usartESP.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1833" selectionTopPixel="1925"/>
+<editorState selectionHorizontalPixel="0" selectionLength="22" selectionOffset="1546" selectionTopPixel="462"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="init.h" partName="init.h" path="D:/Program/CooCox/CoIDE/workspace/Lama/init.h" title="init.h" tooltip="D:/Program/CooCox/CoIDE/workspace/Lama/init.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Lama/init.h"/>
@@ -40,10 +41,14 @@
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Lama/peripheral/usartMH.c"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="680" selectionTopPixel="0"/>
 </editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="init.c" partName="init.c" path="D:/Program/CooCox/CoIDE/workspace/Lama/init.c" title="init.c" tooltip="D:/Program/CooCox/CoIDE/workspace/Lama/init.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Lama/init.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="8152" selectionTopPixel="3270"/>
+</editor>
 </editors>
 <views>
 <view id="org.coocox.builder.ui.views.ProjectView" partName="Project">
-<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="0">
+<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="8">
 <expanded>
 <element path="/Lama"/>
 <element path="/Lama/peripheral"/>
@@ -51,7 +56,7 @@
 <element path="/Lama/stm_lib/inc"/>
 </expanded>
 <selection>
-<element path="/Lama/peripheral/usartMH.c"/>
+<element path="/Lama/init.c"/>
 </selection>
 </viewState>
 </view>
@@ -249,25 +254,10 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Lama/peripheral/usartMH.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Lama/peripheral/usartESP.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Lama/init.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Lama/peripheral/usartESP.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Lama/init.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Lama/init.c"/>
 </editors>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="1468" y="0"/>
-</item>
-<item historyLabel="init.h" index="1">
-<position info="not_deleted" x="2712" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="5121" y="0"/>
-</item>
-<item historyLabel="init.h" index="1">
-<position info="not_deleted" x="2730" y="0"/>
-</item>
-<item historyLabel="init.h" index="1">
-<position/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="1505" y="450"/>
-</item>
 <item historyLabel="init.h" index="1">
 <position/>
 </item>
@@ -397,8 +387,26 @@
 <item historyLabel="main.c" index="0">
 <position info="not_deleted" x="2147" y="0"/>
 </item>
-<item active="true" historyLabel="main.c" index="0">
+<item historyLabel="main.c" index="0">
 <position info="not_deleted" x="1420" y="0"/>
+</item>
+<item historyLabel="usartESP.c" index="6">
+<position info="not_deleted" x="1546" y="22"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="3706" y="0"/>
+</item>
+<item historyLabel="init.h" index="7">
+<position info="not_deleted" x="2617" y="4"/>
+</item>
+<item historyLabel="init.c" index="8">
+<position info="not_deleted" x="8152" y="0"/>
+</item>
+<item historyLabel="usartESP.c" index="6">
+<position info="not_deleted" x="1546" y="22"/>
+</item>
+<item active="true" historyLabel="main.c" index="0">
+<position/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -407,6 +415,9 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="init.c" tooltip="Lama/init.c">
+<persistable path="/Lama/init.c"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usartMH.c" tooltip="Lama/peripheral/usartMH.c">
 <persistable path="/Lama/peripheral/usartMH.c"/>
 </file>
@@ -448,9 +459,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="init.h" tooltip="Lama/init.h">
 <persistable path="/Lama/init.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="core_cm3.h" tooltip="Lama/cmsis/core_cm3.h">
-<persistable path="/Lama/cmsis/core_cm3.h"/>
 </file>
 </mruList>
 </workbench>
