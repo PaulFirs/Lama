@@ -1,6 +1,6 @@
 #include "usartESP.h"
 
-inline void clear_Buffer(uint8_t *pucBuffer, uint8_t size) {
+void clear_Buffer(uint8_t *pucBuffer, uint8_t size) {
 
     memset(pucBuffer, '\0', size);
 	RXi = 0;
@@ -84,14 +84,13 @@ void USART1_IRQHandler(void)
 				case(RX_MODE):
 					if(RXi == id_rx){
 						way_prep_mes = DECODE;
+						way_get_mes = GET_LESS;
 						TIM4->CNT = 1000;
 					}
 
-					if(RXi > id_rx)
-					{
-						if(RXc == '>'){
-							way_prep_mes = SENDMES;
-						}
+				case(GET_LESS):
+					if(RXc == '>'){
+						way_prep_mes = SENDMES;
 					}
 					break;
 			}

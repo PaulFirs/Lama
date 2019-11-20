@@ -101,14 +101,15 @@ int main(void)
 			case UPDATA:
 				GPIOC->ODR ^= GPIO_Pin_13;
 				way_prep_mes = WAIT_EQV;
-				if(strstr((const char *)RX_BUF, "CLOSED")){
-					way_get_mes = WAIT;
-				}
 				if((strstr((const char *)RX_BUF, "ERROR"))
 						||(strstr((const char *)RX_BUF, "FAIL"))){
 					clear_Buffer(RX_BUF, RX_BUF_SIZE);
 					init = 1;
+					way_get_mes = WAIT;
 					way_prep_mes = INIT_ESP;
+				}
+				if(strstr((const char *)RX_BUF, "CLOSED")){
+					way_get_mes = WAIT;
 				}
 				break;
 

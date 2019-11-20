@@ -130,11 +130,6 @@ uint8_t command;
 //-------------------------------------------//
 
 
-//настройки MH-Z19
-uint8_t RXi_MH; // Счетчик принятого массива от MH-Z19
-uint8_t co_h;
-uint8_t co_l;
-uint8_t temp;
 
 
 
@@ -207,7 +202,8 @@ enum get_mes{
 
 WAIT,
 ID,
-RX_MODE
+RX_MODE,
+GET_LESS
 };
 
 uint8_t way_prep_mes;

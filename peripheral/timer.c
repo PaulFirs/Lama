@@ -10,6 +10,9 @@ void TIM4_IRQHandler(void)
 		if (!GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_0)) {//нажата кнопка ручного включения люстры
 			chan();
 		}
+		if(way_prep_mes == WAIT_EQV){
+			way_prep_mes = UPDATA;
+		}
 
     	switch(way_prep_mes){
 			case DECODE:
@@ -18,7 +21,7 @@ void TIM4_IRQHandler(void)
 
 					case SWITCH_LIGHT:
 						command = SWITCH_LIGHT;
-						TIM3->CNT = TIM3_PERIOD;
+						TIM3->CNT = TIM3_PERIOD-2000;
 						break;
 
 					case SET_TIME:
@@ -57,6 +60,8 @@ void TIM4_IRQHandler(void)
 				size_cmd = sizeof_cmd(cmd);
 				itoa(size_cmd, count, 10);
 				way_prep_mes = INIT_SENDMES;
+				clear_Buffer(RX_BUF, RX_BUF_SIZE);
+
 			break;
     	}
 	}
@@ -67,9 +72,6 @@ void TIM4_IRQHandler(void)
 void TIM3_IRQHandler(void)
 {
 	if (TIM_GetITStatus(TIM3, ((uint16_t)0x0001)) != RESET){
-		if(way_prep_mes == WAIT_EQV){
-			way_prep_mes = UPDATA;
-		}
 		switch(command){
 			case SWITCH_LIGHT:
 				chan();
