@@ -1,5 +1,6 @@
 #include "usartESP.h"
 
+
 void clear_Buffer(uint8_t *pucBuffer, uint8_t size) {
 
     memset(pucBuffer, 0xFF, size);

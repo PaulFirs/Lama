@@ -1,5 +1,7 @@
 #include "main.h"
 
+
+
 void chan(void){
 	for(uint8_t i = 3; i; i--){	//3 раз отправляет 0b0000000111110110011100000 для верности.
 		uint32_t mes = MES;
@@ -24,6 +26,7 @@ void chan(void){
 
 uint8_t sizeof_cmd(struct t_cmd cmd){
 	uint8_t size = sizeof(cmd.cmd_type);
+	size += sizeof(cmd.check_sum);
 	switch (cmd.cmd_type) {            //читаем первый принятый байт-команду
 
 		case SWITCH_LIGHT:

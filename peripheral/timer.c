@@ -3,6 +3,27 @@
 
 const uint8_t getppm[9]			= {0xff, 0x01, 0x86, 0x00, 0x00, 0x00, 0x00, 0x00, 0x79};
 
+inline static uint8_t CRC8(uint8_t *pucBuffer, uint8_t size) {
+
+    uint8_t crc = 0;
+	uint8_t flag = 0;
+	uint8_t data = 0;
+	for(uint8_t i = 1; i<size; i++){
+		data = pucBuffer[i];
+		for (int j = 0; j < 8; j++) {
+			flag = crc^data;
+			flag = flag&0x01;
+			crc = crc>>1;
+			data = data >> 1;
+			if (flag)
+				crc = crc ^ 0x8C;
+		}
+	}
+	return crc;
+}
+
+
+
 void TIM4_IRQHandler(void)
 {
 	if (TIM_GetITStatus(TIM4, ((uint16_t)0x0001)) != RESET)
@@ -18,8 +39,8 @@ void TIM4_IRQHandler(void)
 
     	switch(way_prep_mes){
 			case DECODE:
-				cmd.cmd_type = RX_BUF[0];
-				switch (RX_BUF[0]) {            //читаем первый принятый байт-команду
+				cmd.cmd_type = RX_BUF[1];
+				switch (RX_BUF[1]) {            //читаем первый принятый байт-команду
 
 					case SWITCH_LIGHT:
 						command = SWITCH_LIGHT;
@@ -29,7 +50,7 @@ void TIM4_IRQHandler(void)
 					case SET_TIME:
 
 						for(uint8_t i = 0; i < 3; i++)
-							time.h_m_s[i] = RX_BUF[1 + i];
+							time.h_m_s[i] = RX_BUF[2 + i];
 						command = SET_TIME;
 						TIM3->CNT = TIM3_PERIOD;
 						break;
@@ -40,9 +61,9 @@ void TIM4_IRQHandler(void)
 
 					case SET_ALARM:
 						for(uint8_t i = 0; i < 3; i++)
-							alarm.h_m_s[i] = RX_BUF[1 + i];
-						alarm.status = RX_BUF[4];
-						alarm.settings = RX_BUF[5];
+							alarm.h_m_s[i] = RX_BUF[2 + i];
+						alarm.status = RX_BUF[5];
+						alarm.settings = RX_BUF[6];
 						command = SET_ALARM;
 						TIM3->CNT = TIM3_PERIOD;
 						break;
@@ -59,7 +80,11 @@ void TIM4_IRQHandler(void)
 					default:
 						cmd.cmd_type = 0xFF;
 				}
+
 				size_cmd = sizeof_cmd(cmd);
+				cmd.check_sum = CRC8((uint8_t *)&cmd, size_cmd);
+
+
 				itoa(size_cmd, count, 10);
 				way_prep_mes = INIT_SENDMES;
 				clear_Buffer(RX_BUF, RX_BUF_SIZE);

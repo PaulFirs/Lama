@@ -16,16 +16,12 @@
          <include file="..\..\..\stm_lib\inc\stm32f10x_gpio.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
       </source>
-      <source file="..\..\..\peripheral\timer.c" lastModified="16e8c1024ee">
-         <include file="..\..\..\main.h"/>
-         <include file="..\..\..\init.h"/>
-      </source>
       <source file="..\..\..\cmsis_boot\system_stm32f10x.h" lastModified="16de3343c4e">
       </source>
       <source file="..\..\..\peripheral\usartMH.h" lastModified="16e0c65c836">
          <include file="..\..\..\init.h"/>
       </source>
-      <source file="..\..\..\init.h" lastModified="16e913b6d03">
+      <source file="..\..\..\init.h" lastModified="16ea5c61e86">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_gpio.h"/>
@@ -87,9 +83,6 @@
          <include file="..\..\..\peripheral\usartMH.h"/>
          <include file="..\..\..\peripheral\ds3231.h"/>
       </source>
-      <source file="..\..\..\main.c" lastModified="16e915709ca">
-         <include file="..\..\..\main.h"/>
-      </source>
       <source file="..\..\..\dwt_delay.h" lastModified="16de32ac3ef">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
@@ -126,6 +119,9 @@
       </source>
       <source file="..\..\..\stm_lib\inc\stm32f10x_tim.h" lastModified="16de3347533">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
+      </source>
+      <source file="..\..\..\peripheral\usartESP.c" lastModified="16ea59f9690">
+         <include file="..\..\..\peripheral\usartESP.h"/>
       </source>
       <source file="..\..\..\peripheral\i2c.h" lastModified="16de32ac3ef">
          <include file="..\..\..\init.h"/>

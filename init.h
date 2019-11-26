@@ -103,6 +103,7 @@ PACKSTRUCT(struct t_sensors{
 });
 
 PACKSTRUCT( struct t_cmd{
+	uint8_t check_sum;
 	uint8_t cmd_type;
 
 	union{
@@ -225,11 +226,12 @@ WAIT_EQV
 
 //Методы и функции
 void SetSysClockTo72(void);
-
 void ports_init(void);
 void usartESP_init(void);
 void timer_init(void);
 void I2C1_init(void);
 void usartCN_init(void);
+
+inline static uint8_t CRC8(uint8_t *pucBuffer, uint8_t size);
 
 #endif
