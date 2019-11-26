@@ -8,7 +8,7 @@ void clear_Buffer(uint8_t *pucBuffer, uint8_t size);
 void USARTSendCHAR(uint8_t pucBuffer);
 void USARTSendSTR(const char *pucBuffer);
 void USARTSendCMD(uint8_t *pucBuffer, uint8_t size);
-void uart_wite_for(char *str);
+uint8_t uart_wite_for(char *str, const char *resp);
 void init_ESP(void);
 
 

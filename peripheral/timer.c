@@ -8,7 +8,9 @@ void TIM4_IRQHandler(void)
 	if (TIM_GetITStatus(TIM4, ((uint16_t)0x0001)) != RESET)
 	{
 		if (!GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_0)) {//нажата кнопка ручного включения люстры
-			chan();
+
+			USARTSendSTR(RX_BUF);
+			//chan();
 		}
 		if(way_prep_mes == WAIT_EQV){
 			way_prep_mes = UPDATA;

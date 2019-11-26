@@ -72,7 +72,6 @@ void EXTI1_IRQHandler(void)//будильник
 int main(void)
 {
 	//инициализация переменных
-	init = 1;
 	way_get_mes = WAIT;
 	way_prep_mes = INIT_ESP;
 	command = GET_TIME;
@@ -90,6 +89,7 @@ int main(void)
 	DS3231_init();
 	DWT_Delay_ms(1000); // задержка для инициализации ESP
 	usartCN_init();
+	//GPIOC->ODR ^= GPIO_Pin_13;
     while(1)
     {
     	switch(way_prep_mes){
@@ -101,15 +101,21 @@ int main(void)
 			case UPDATA:
 				GPIOC->ODR ^= GPIO_Pin_13;
 				way_prep_mes = WAIT_EQV;
-				if((strstr((const char *)RX_BUF, "ERROR"))
+				char *mes;
+				if(mes = strstr((const char *)RX_BUF, "+IPD")){
+//					id = mes[4];
+//					id_rx = atoi (&mes[6]);
+//					way_prep_mes = DECODE;
+//					TIM4->CNT = 1000;
+				}
+				else if(strstr((const char *)RX_BUF, "CLOSED")){
+					way_get_mes = WAIT;
+				}
+				else if((strstr((const char *)RX_BUF, "ERROR"))
 						||(strstr((const char *)RX_BUF, "FAIL"))){
 					clear_Buffer(RX_BUF, RX_BUF_SIZE);
-					init = 1;
 					way_get_mes = WAIT;
 					way_prep_mes = INIT_ESP;
-				}
-				if(strstr((const char *)RX_BUF, "CLOSED")){
-					way_get_mes = WAIT;
 				}
 				break;
 
@@ -120,6 +126,7 @@ int main(void)
 				USARTSendCHAR(',');
 				USARTSendSTR(count);
 				USARTSendSTR("\r\n");
+				//way_get_mes = GET_LESS;
 				way_prep_mes = WAIT_EQV;
 				break;
 
