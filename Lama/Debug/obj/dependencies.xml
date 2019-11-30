@@ -21,7 +21,7 @@
       <source file="..\..\..\peripheral\usartMH.h" lastModified="16e0c65c836">
          <include file="..\..\..\init.h"/>
       </source>
-      <source file="..\..\..\init.h" lastModified="16ea5c61e86">
+      <source file="..\..\..\init.h" lastModified="16eb038214e">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_gpio.h"/>
@@ -83,12 +83,15 @@
          <include file="..\..\..\peripheral\usartMH.h"/>
          <include file="..\..\..\peripheral\ds3231.h"/>
       </source>
+      <source file="..\..\..\cmsis\core_cmInstr.h" lastModified="16de334443f">
+      </source>
+      <source file="..\..\..\main.c" lastModified="16eb0325a39">
+         <include file="..\..\..\main.h"/>
+      </source>
       <source file="..\..\..\dwt_delay.h" lastModified="16de32ac3ef">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_gpio.h"/>
-      </source>
-      <source file="..\..\..\cmsis\core_cmInstr.h" lastModified="16de334443f">
       </source>
       <source file="..\..\..\stm_lib\src\stm32f10x_flash.c" lastModified="16e54603f5c">
          <include file="..\..\..\stm_lib\inc\stm32f10x_flash.h"/>

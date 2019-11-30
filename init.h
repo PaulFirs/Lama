@@ -53,9 +53,16 @@ GET_TIME,
 SET_TIME,
 GET_ALARM,
 SET_ALARM,
-GET_SENSORS,
+SENSORS,
 
 ZERO = 0xFF
+};
+
+enum sub_sensors{
+	GET_SENSORS,
+	PPM2K,
+	PPM5K,
+	ABC
 };
 
 
@@ -182,6 +189,17 @@ uint8_t command;
 
 
 
+//Настройки будильника
+enum {
+ALARM_CHAN = 0x01,
+ALARM_LIGHT = 0x02,
+ALARM_SING = 0x04,
+ALARM_WINDOW = 0x08
+};
+
+
+
+
 //------------------------------------------//
 //				Обработка ошибок		 	//
 //------------------------------------------//
@@ -216,7 +234,6 @@ INVITATION,
 INIT_SENDMES,
 SENDMES,
 INIT_ESP,
-GET_SENSOR,
 WAIT_EQV
 };
 
@@ -232,6 +249,6 @@ void timer_init(void);
 void I2C1_init(void);
 void usartCN_init(void);
 
-inline static uint8_t CRC8(uint8_t *pucBuffer, uint8_t size);
+uint8_t CRC8(uint8_t *pucBuffer, uint8_t size);
 
 #endif

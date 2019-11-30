@@ -44,32 +44,35 @@ uint8_t sizeof_cmd(struct t_cmd cmd){
 		case GET_ALARM:
 			return size += sizeof(struct t_alarm);
 
-		case GET_SENSORS:
+		case SENSORS:
 			return size += sizeof(struct t_sensors);
 		default:
 			return size;
 	}
 }
+
+void get_alarm(void)//будильник
+{
+	if(settings.alarm & ALARM_CHAN){
+		chan();
+	}
+	if(settings.alarm & ALARM_LIGHT){
+	}
+	if(settings.alarm & ALARM_SING){
+	}
+	if(settings.alarm & ALARM_WINDOW){
+	}
+}
+
 void EXTI1_IRQHandler(void)//будильник
 {
 	EXTI->PR|=EXTI_PR_PR1; //Очищаем флаг
 	ds3231_del_alarm();
-	chan();
-	//get_alarm();
+	//chan();
+	get_alarm();
 }
 
-//void get_alarm(void)//будильник
-//{
-//	if(stat_alarm & ALARM_CHAN){
-//		chan();
-//	}
-//	if(stat_alarm & ALARM_LIGHT){
-//	}
-//	if(stat_alarm & ALARM_SING){
-//	}
-//	if(stat_alarm & ALARM_WINDOW){
-//	}
-//}
+
 
 
 int main(void)
@@ -102,7 +105,6 @@ int main(void)
 				break;
 
 			case UPDATA:
-				GPIOC->ODR ^= GPIO_Pin_13;
 				way_prep_mes = WAIT_EQV;
 				char *mes;
 				if(mes = strstr((const char *)RX_BUF, "+IPD")){
@@ -129,7 +131,6 @@ int main(void)
 				USARTSendCHAR(',');
 				USARTSendSTR(count);
 				USARTSendSTR("\r\n");
-				//way_get_mes = GET_LESS;
 				way_prep_mes = WAIT_EQV;
 				break;
 
