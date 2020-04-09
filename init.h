@@ -34,7 +34,7 @@ uint8_t init; 	// Состояние подключения клиента к модулю
 				// 1 - Нет подключенных (Переинициализируется модуль и ожидает клиента)
 				// 0 - Клиент подключен (Начинается взаимодействие с ним)
 uint8_t id;		// Номер сокета к которому подключился клиент (сквозной номер клиента)
-uint8_t id_rx;	// Количество принятых байт
+uint8_t cnt_rx;	// Количество принятых байт
 uint8_t FLAG_REPLY;	// Флаг для приема ответных команд AT
 
 
@@ -215,6 +215,14 @@ uint8_t error_i2c;
 //				Логика взамодействия	 	//
 //------------------------------------------//
 char count[3]; // количество отправляемых символов
+uint8_t ticks_client;
+uint8_t way_state;
+#define DELAY_WEB 12 * 10
+enum get_state{
+
+S_SERVER,
+S_CLIENT
+};
 
 uint8_t way_get_mes;
 enum get_mes{
@@ -234,6 +242,7 @@ INVITATION,
 INIT_SENDMES,
 SENDMES,
 INIT_ESP,
+CHANGE_STATE_ESP,
 WAIT_EQV
 };
 

@@ -81,7 +81,8 @@ int main(void)
 	way_get_mes = WAIT;
 	way_prep_mes = INIT_ESP;
 	command = GET_TIME;
-
+	way_state = S_SERVER;
+	ticks_client = 6;
 
 	//инициализация периферии
 	SetSysClockTo72();
@@ -101,6 +102,11 @@ int main(void)
     	switch(way_prep_mes){
 			case INIT_ESP:
 				init_ESP();
+				way_prep_mes = UPDATA;
+				break;
+
+			case CHANGE_STATE_ESP:
+				changeState_ESP();
 				way_prep_mes = UPDATA;
 				break;
 

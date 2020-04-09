@@ -9,6 +9,8 @@ const uint8_t clbd[9]			= {0xff, 0x01, 0x88, 0x00, 0x00, 0x00, 0x07, 0xD0, 0xa0}
 
 uint8_t *cmd_mh;
 
+extern uint8_t ticks_client;
+
 uint8_t CRC8(uint8_t *pucBuffer, uint8_t size) {
 
     uint8_t crc = 0;
@@ -119,6 +121,13 @@ void TIM4_IRQHandler(void)
 void TIM3_IRQHandler(void)
 {
 	if (TIM_GetITStatus(TIM3, ((uint16_t)0x0001)) != RESET){
+
+		if(!ticks_client){
+			ticks_client = DELAY_WEB;
+			way_prep_mes = CHANGE_STATE_ESP;
+		}
+		ticks_client--;
+
 		switch(command){
 			case SWITCH_LIGHT:
 				chan();

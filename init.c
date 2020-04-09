@@ -129,6 +129,12 @@ void ports_init(void)
 	port.GPIO_Pin = GPIO_Pin_0;
 	GPIO_Init(GPIOB, &port);
 
+	/* Configure Pin (PB.0) as input(btn) for chan */
+	port.GPIO_Speed = GPIO_Speed_2MHz;
+	port.GPIO_Mode = GPIO_Mode_IPU;
+	port.GPIO_Pin = GPIO_Pin_0;
+	GPIO_Init(GPIOB, &port);
+
 	//—обытие срабатывани€ будильника на ds3231
 	//прерывание на PORTB_1
 	//RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB , ENABLE);
